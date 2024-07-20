@@ -1,9 +1,182 @@
+"use client";
 import Image from "next/image";
+import {
+  FaArrowLeftLong,
+  FaArrowRightLong,
+  FaCss3,
+  FaHtml5,
+  FaJs,
+  FaLinkedin,
+  FaNodeJs,
+  FaSquareGithub,
+  FaSquareXTwitter,
+} from "react-icons/fa6";
+import {
+  BiLogoCss3,
+  BiLogoFigma,
+  BiLogoGit,
+  BiLogoHtml5,
+  BiLogoJavascript,
+  BiLogoMongodb,
+  BiLogoNodejs,
+  BiLogoPython,
+  BiLogoReact,
+  BiLogoTailwindCss,
+  BiLogoTypescript,
+} from "react-icons/bi";
+import { useEffect, useRef, useMemo, useState } from "react";
+
+const Lorem = (n) => {
+  return (
+    <>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </>
+  );
+};
 
 export default function Home() {
+  const [cect, setCect] = useState();
+  const [view, setView] = useState(1);
+  const [softpos, setSoftPos] = useState(0);
+  const [mlaipos, setMlaiPos] = useState(0);
+  const [telpos, setTelPos] = useState(0);
+  const [arrpos, setArrPos] = useState(false);
+
+  const projtype = [
+    { name: "Soft Dev" },
+    { name: "ML & AI" },
+    { name: "Telecom" },
+  ];
+
+  const software = [
+    {
+      title: "VRA Internship Portal & Management System",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "Farmecy Technologies Bulk SMS Application",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "Urban Air Pollution Challenge",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "Urban Air Pollution Challenge",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+  ];
+
+  const mlai = [
+    {
+      title: "Urban Air Pollution Challenge",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+  ];
+
+  const telecom = [];
+
+  const navReaction = (e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    const ratio = scrollTop / (scrollHeight - clientHeight);
+    if (ratio < 0.25) {
+      setCect("");
+    } else if (0.5 > ratio > 0.25) {
+      setCect("B");
+    } else if (0.65 > ratio > 0.4) {
+      setCect("P");
+    } else if (0.9 > ratio > 0.65) {
+      setCect("S");
+    } else if (ratio > 0.9) {
+      setCect("C");
+    }
+  };
+
+  const projScroll = (e, setter, len) => {
+    const { scrollLeft, scrollWidth } = e.target;
+    setter(scrollLeft / scrollWidth);
+    const currentpos = scrollLeft / scrollWidth;
+    const ratio = scrollWidth / (len * scrollWidth);
+    const lastpos = 1 - ratio;
+
+    if (currentpos < ratio) {
+      setArrPos(false);
+    }
+    if (currentpos + ratio > lastpos) {
+      setArrPos(true);
+    }
+  };
+
+  const selectDot = (x, y, z) => {
+    if (x / y - 1 / (2 * y) < z && z < x / y + 1 / (2 * y)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleNavClick = (thisSection) => {
+    const scrollCont = document.getElementById("scrollBox");
+    const section = document.getElementById(thisSection);
+    const position = section.offsetTop;
+    scrollCont.scrollTo(0, position);
+  };
+
+  const handleDotClick = (idd, index, len) => {
+    const scrollCont = document.getElementById(idd);
+    const position = (scrollCont.scrollWidth * index) / len;
+    scrollCont.scrollTo(position, 0);
+  };
+
+  const handleRightClick = (idd, len) => {
+    const scrollCont = document.getElementById(idd);
+    const currentpos = scrollCont.scrollLeft / scrollCont.scrollWidth;
+    const ratio = scrollCont.scrollWidth / (len * scrollCont.scrollWidth);
+    const lastpos = 1 - ratio;
+    if (currentpos < lastpos) {
+      scrollCont.scrollTo((currentpos + ratio) * scrollCont.scrollWidth, 0);
+    }
+    if (currentpos + 2 * ratio > lastpos) {
+      setArrPos(true);
+    }
+  };
+
+  const handleLeftClick = (idd, len) => {
+    const scrollCont = document.getElementById(idd);
+    const currentpos = scrollCont.scrollLeft / scrollCont.scrollWidth;
+    const ratio = scrollCont.scrollWidth / (len * scrollCont.scrollWidth);
+    if (currentpos > 0) {
+      scrollCont.scrollTo((currentpos - ratio) * scrollCont.scrollWidth, 0);
+    }
+    if (currentpos - ratio < ratio) {
+      setArrPos(false);
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center gap-10 ">
-      <nav className="flex flex-row justify-between w-full h-12 shadow-md">
+      <nav className="flex flex-row justify-between w-full h-12 fixed top-0 px-10">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
           <Image
@@ -16,28 +189,450 @@ export default function Home() {
           <p className="text-[18px] font-bold ">ted</p>
         </div>
         <ul className="flex gap-8 items-center text-sm font-medium">
-          <li>HOME</li>
-          <li>PROJECTS</li>
-          <li>BIO</li>
-          <li>RESUME</li>
-          <li>CONTACT ME</li>
+          <li
+            key="1"
+            id={`${cect === "B" ? "highlight" : ""}`}
+            className="normal"
+            onClick={() => {
+              handleNavClick("bio");
+            }}
+          >
+            BIO
+          </li>
+          <li
+            key="2"
+            id={`${cect === "P" ? "highlight" : ""}`}
+            className="normal"
+            onClick={() => {
+              handleNavClick("projects");
+            }}
+          >
+            PROJECTS
+          </li>
+          <li
+            key="3"
+            id={`${cect === "S" ? "highlight" : ""}`}
+            className="normal"
+            onClick={() => {
+              handleNavClick("skills");
+            }}
+          >
+            SKILLS
+          </li>
+          <li
+            key="4"
+            id={`${cect === "C" ? "highlight" : ""}`}
+            className="normal"
+            onClick={() => {
+              handleNavClick("contact");
+            }}
+          >
+            CONTACT ME
+          </li>
         </ul>
       </nav>
-      <div className=" w-full ">
-        <section className="flex h-[650px] w-full">
-          <div className="w-4/6 flex flex-col ">
+      <div
+        className="flex flex-col justify-start h-[100dvh] items-center w-full overflow-y-scroll snap-mandatory snap-y"
+        id="scrollBox"
+        onScroll={(e) => {
+          navReaction(e);
+        }}
+      >
+        {/* HOME /////////////////////////////////////////////////////////////////*/}
+
+        <section
+          id="home"
+          className="flex justify-center gap-[10%] pt-12  h-fit min-h-full w-fit px-[100px] snap-end"
+        >
+          <div className=" w-4/6 h-fit flex flex-col pt-[64px]">
             <h2>WELCOME TO MY PAGE</h2>
-            <h1 className=" text-5xl font-bold leading-snug">Hi, I`m Elvis Theodore a Developer.</h1>
+            <h1 className="text-5xl font-bold leading-snug">
+              Hi, Yeah That's It.
+            </h1>
+            <div className="h-fit w-[400px]">
+              <h3>
+                {" "}
+                <Lorem></Lorem>
+              </h3>
+            </div>
+            <div className="flex h-fit w-fit gap-4 pt-12 ">
+              <FaSquareXTwitter size={"50px"} />
+              <FaSquareGithub size={"50px"} />
+              <FaLinkedin size={"50px"} />
+            </div>
           </div>
-          <div className="w-1/2">
+
+          <div className="w-[300px] h-fit flex justify-center ;">
             {" "}
             <Image
-              width={1000000}
+              width={100000}
               height={100000}
-              src="/RizzApple.jpeg"
-              className=" w-xl h-[558px]"
+              src="/RizzApple.png"
+              className=" min-w-[700px] h-[558px] drop-shadow-[60px_2px_5px_rgb(0,0,0,0.6)] "
               alt="profile pic"
             ></Image>
+          </div>
+        </section>
+
+        {/* BIO /////////////////////////////////////////////////////////////////*/}
+
+        <section
+          id="bio"
+          className="h-fit py-24  min-h-full w-[1000px] snap-start"
+        >
+          <div className=" flex  h-[50%]">
+            <div className="h-full w-[60%] relative">
+              <div className="w-[90%] bg-slate-400 h-[95%] rounded-xl absolute top-[20%] -z-10"></div>
+              <div className="w-[90%] bg-slate-300 h-[95%] rounded-xl absolute top-[5%] left-[10%]"></div>
+            </div>
+            <div className="flex w-[40%] text-wrap justify-center items-end">
+              {" "}
+              <h1 className="w-[100%] text-5xl font-bold leading-snug">
+                This is all you need to know about me.
+              </h1>
+            </div>
+          </div>
+          <div className="pl-96">
+            {" "}
+            <h3 className="">
+              {" "}
+              <Lorem></Lorem>
+            </h3>
+          </div>
+        </section>
+
+        {/* PROECTS /////////////////////////////////////////////////////////////////*/}
+
+        <section
+          id="projects"
+          className=" relative h-fit pt-24 min-h-full w-[1000px] snap-start"
+        >
+          {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
+            What Have I Done ?
+          </h1> */}
+          <ul className="flex flex-row gap-8 " id="listy">
+            {projtype.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  id={`${view === index + 1 ? "selected" : ""}`}
+                  onClick={() => {
+                    setView(index + 1);
+                  }}
+                  className="cursor-pointer border-b-0 border-x-0 border-2 border-[rgb(var(--main))] py-1 px-4"
+                >
+                  {item.name}
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* SOFYWARE ///////////////////////////////////////*/}
+
+          {(view === 1 && software.length === 0 && (
+            <h3 className="font-bold uppercase pt-8">
+              Nothing to see here yet, will be updated soon
+            </h3>
+          )) ||
+            (view === 1 && (
+              <>
+                <div
+                  id="softscroll"
+                  onScroll={(e) => {
+                    projScroll(e, setSoftPos, software.length);
+                  }}
+                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                >
+                  {software.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                      >
+                        {" "}
+                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <div className="w-full h-fit flex gap-4 justify-start">
+                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
+                          <div className="bg-slate-200 w-[40%] h-[200px]"></div>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Description:</h3>
+                          <h3>
+                            <Lorem></Lorem>
+                          </h3>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Link:</h3>
+                          <h3>{item.link}</h3>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleLeftClick("softscroll", software.length);
+                    }}
+                  >
+                    <FaArrowLeftLong size={"40px"} />
+                  </div>
+                  {software.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          handleDotClick("softscroll", index, software.length)
+                        }
+                        id={
+                          selectDot(index, software.length, softpos)
+                            ? "light"
+                            : ""
+                        }
+                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                      ></div>
+                    );
+                  })}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleRightClick("softscroll", software.length);
+                    }}
+                  >
+                    <FaArrowRightLong size={"40px"} />
+                  </div>
+                </div>
+              </>
+            ))}
+
+          {/* MLAI ///////////////////////////////////////*/}
+
+          {(view === 2 && mlai.length === 0 && (
+            <h3 className="font-bold uppercase pt-8">
+              Nothing to see here yet, will be updated soon
+            </h3>
+          )) ||
+            (view == 2 && (
+              <>
+                <div
+                  id="mlaiscroll"
+                  onScroll={(e) => {
+                    projScroll(e, setMlaiPos, mlai.length);
+                  }}
+                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                >
+                  {mlai.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                      >
+                        {" "}
+                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <div className="w-full h-fit flex gap-4 justify-start">
+                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Description:</h3>
+                          <h3>
+                            <Lorem></Lorem>
+                          </h3>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Link:</h3>
+                          <h3>{item.link}</h3>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleLeftClick("mlaiscroll", mlai.length);
+                    }}
+                  >
+                    <FaArrowLeftLong size={"40px"} />
+                  </div>
+                  {mlai.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          handleDotClick("mlaiscroll", index, mlai.length)
+                        }
+                        id={
+                          selectDot(index, mlai.length, mlaipos) ? "light" : ""
+                        }
+                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                      ></div>
+                    );
+                  })}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleRightClick("mlaiscroll", mlai.length);
+                    }}
+                  >
+                    <FaArrowRightLong size={"40px"} />
+                  </div>
+                </div>
+              </>
+            ))}
+
+          {/* TELECOM ///////////////////////////////////////*/}
+
+          {(view === 3 && telecom.length === 0 && (
+            <h3 className="font-bold uppercase pt-8">
+              Nothing to see here yet, will be updated soon
+            </h3>
+          )) ||
+            (view === 3 && (
+              <>
+                <div
+                  id="telscroll"
+                  onScroll={(e) => {
+                    projScroll(e, setTelPos, telecom.length);
+                  }}
+                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                >
+                  {telecom.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                      >
+                        {" "}
+                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <div className="w-full h-fit flex gap-4 justify-start">
+                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Description:</h3>
+                          <h3>
+                            <Lorem></Lorem>
+                          </h3>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Link:</h3>
+                          <h3>{item.link}</h3>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleLeftClick("telscroll", telecom.length);
+                    }}
+                  >
+                    <FaArrowLeftLong size={"40px"} />
+                  </div>
+                  {telecom.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          handleDotClick("telscroll", index, telecom.length)
+                        }
+                        id={
+                          selectDot(index, telecom.length, telpos)
+                            ? "light"
+                            : ""
+                        }
+                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                      ></div>
+                    );
+                  })}
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      handleRightClick("telscroll", telecom.length);
+                    }}
+                  >
+                    <FaArrowRightLong size={"40px"} />
+                  </div>
+                </div>
+              </>
+            ))}
+        </section>
+
+        {/* SKILLS /////////////////////////////////////////////////////////////////*/}
+
+        <section
+          id="skills"
+          className="pt-24 flex flex-col gap-8 h-fit min-h-full w-[1000px] snap-end"
+        >
+          <div>
+            <label className="font-bold uppercase">Soft Skills</label>
+
+            <ul className="list-disc pl-16">
+              <li>Critical Thinking & Problem Solving</li>
+              <li>Leadership and Interpersonal Skills</li>
+              <li>Ability to learn new disciplines quickly</li>
+              <li>Fundamental understanding in programming</li>
+            </ul>
+          </div>
+          <div>
+            <label className="font-bold uppercase">Hard Skills</label>
+            <ul className="list-disc pl-16">
+              <li>Software Development</li>
+              <li>Machine Learning & AI</li>
+              <li>Computer Networking & Cisco Packet Tracer</li>
+              <li>MATLAB</li>
+              <li>LATEX</li>
+            </ul>
+          </div>
+          <div>
+            <label className="font-bold uppercase">Tech Stack</label>
+
+            <div id="scroll" className=" flex w-full overflow-hidden ml-16">
+              <div id="logodiv" className="flex">
+                <BiLogoFigma />
+                <BiLogoHtml5 />
+                <BiLogoCss3 />
+                <BiLogoJavascript />
+                <BiLogoPython />
+                <BiLogoTypescript />
+                <BiLogoReact />
+                <BiLogoTailwindCss />
+                <BiLogoNodejs />
+                <BiLogoMongodb />
+                <BiLogoGit />
+              </div>
+              <div id="logodiv" className="flex">
+                <BiLogoFigma />
+                <BiLogoHtml5 />
+                <BiLogoCss3 />
+                <BiLogoJavascript />
+                <BiLogoPython />
+                <BiLogoTypescript />
+                <BiLogoReact />
+                <BiLogoTailwindCss />
+                <BiLogoNodejs />
+                <BiLogoMongodb />
+                <BiLogoGit />
+              </div>
+            </div>
+          </div>
+          <button className="">Download Full Resume</button>
+        </section>
+
+        {/* CONTACT /////////////////////////////////////////////////////////////////*/}
+
+        <section id="contact" className="h-fit min-h-[50%] w-[1000px] snap-end">
+          <div className="flex flex-col gap-4">
+            {" "}
+            <label className="font-bold uppercase">
+              Leave me Feedback below
+            </label>
+            <textarea></textarea>
+            <button>Submit Response</button>
           </div>
         </section>
       </div>
@@ -49,7 +644,7 @@ export default function Home() {
 //   return (
 //     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 //       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-//         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+//         <p className="fixed left-0 tosnap-startp-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
 //           Get started by editing&nbsp;
 //           <code className="font-mono font-bold">src/app/page.js</code>
 //         </p>
