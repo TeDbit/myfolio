@@ -11,6 +11,7 @@
 * {
   flex-shrink: 0;
   scroll-behavior: smooth;
+  text-wrap: wrap;
 }
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -24,6 +25,16 @@ body {
   color: rgb(var(--sec));
   background: linear-gradient(to bottom, transparent, rgb(var(--main)))
     rgb(var(--main));
+}
+
+section {
+  height: 100%;
+  padding: 6rem 0px;
+  max-height: 1024px;
+  width: 100%;
+  max-width: 1024px;
+  /* margin: 0 auto; */
+  scroll-snap-align: start;
 }
 
 #highlight {
@@ -56,12 +67,13 @@ body {
 #listy::after {
   position: absolute;
   z-index: -2;
-  bottom: 0px;
+  bottom: -0px;
   content: "";
   width: 100%;
   height: 2px;
   background-color: rgb(var(--sec));
 }
+
 button {
   height: fit-content;
   width: fit-content;
@@ -71,11 +83,16 @@ button {
 }
 
 textarea {
-  all: unset;
+  padding: 4px 4px;
   border: 1px solid rgb(var(--sec));
   border-radius: 8px;
-  width: 400px;
-  height: 150px;
+  background-color: transparent;
+  resize: none;
+}
+
+textarea:focus {
+  box-shadow: none;
+  outline: none;
 }
 
 .normal {
@@ -94,9 +111,9 @@ textarea {
 }
 
 #logodiv > * {
-  width: 50px;
-  height: 50px;
-  margin: 0 30px;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 1.3rem;
 }
 /* somecolors{
   darkblue :0, 18, 51;
@@ -114,3 +131,48 @@ textarea {
     transform: translateX(-100%);
   }
 }
+
+h1 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 18px;
+}
+li {
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+  :root{
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  li {
+    font-size: 16px;
+  }
+
+  
+
+}
+
+@media only screen and (max-width: 390px) {
+  :root{
+    font-size: 12px;
+  }
+
+    h1 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  li {
+    font-size: 14px;
+  }
+  }

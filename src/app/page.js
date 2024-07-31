@@ -32,10 +32,7 @@ const Lorem = (n) => {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
+      commodo consequat.
     </>
   );
 };
@@ -52,6 +49,13 @@ export default function Home() {
     { name: "Soft Dev" },
     { name: "ML & AI" },
     { name: "Telecom" },
+  ];
+
+  const destinination = [
+    { id: "bio" },
+    { id: "projects" },
+    { id: "skills" },
+    { id: "contacts" },
   ];
 
   const software = [
@@ -87,6 +91,42 @@ export default function Home() {
 
   const mlai = [
     {
+      title: "VRA Internship Portal & Management System",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "VRA Internship Portal & Management System",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "VRA Internship Portal & Management System",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
+      title: "VRA Internship Portal & Management System",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+
+    {
+      title: "Urban Air Pollution Challenge hhhhfhhhvhhf hhhhhh hhhhhhhhhhhh",
+      description: "",
+      imagea: "",
+      imageb: "",
+      link: "",
+    },
+    {
       title: "Urban Air Pollution Challenge",
       description: "",
       imagea: "",
@@ -103,13 +143,13 @@ export default function Home() {
     if (ratio < 0.25) {
       setCect("");
     } else if (0.5 > ratio > 0.25) {
-      setCect("B");
+      setCect("bio");
     } else if (0.65 > ratio > 0.4) {
-      setCect("P");
+      setCect("projects");
     } else if (0.9 > ratio > 0.65) {
-      setCect("S");
+      setCect("skills");
     } else if (ratio > 0.9) {
-      setCect("C");
+      setCect("contacts");
     }
   };
 
@@ -175,64 +215,39 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-10 ">
-      <nav className="flex flex-row justify-between w-full h-12 fixed top-0 px-10">
+    <main className="lg:items-center flex min-h-screen max-w-screen flex-col gap-10  items-start">
+      <nav className="bg-[rgb(var(--main))] z-10 flex flex-row justify-between w-full max-w-[1024px] h-12 fixed top-0">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
-          <Image
+          {/* <Image
             width={40}
             height={40}
             src="/RizzApple.jpeg"
             className="w-[40px] h-[40px] rounded-full"
             alt="profile pic"
-          ></Image>
-          <p className="text-[18px] font-bold ">ted</p>
+          ></Image> */}
+          <h3 className=" font-bold ">ted</h3>
         </div>
-        <ul className="flex gap-8 items-center text-sm font-medium">
-          <li
-            key="1"
-            id={`${cect === "B" ? "highlight" : ""}`}
-            className="normal"
-            onClick={() => {
-              handleNavClick("bio");
-            }}
-          >
-            BIO
-          </li>
-          <li
-            key="2"
-            id={`${cect === "P" ? "highlight" : ""}`}
-            className="normal"
-            onClick={() => {
-              handleNavClick("projects");
-            }}
-          >
-            PROJECTS
-          </li>
-          <li
-            key="3"
-            id={`${cect === "S" ? "highlight" : ""}`}
-            className="normal"
-            onClick={() => {
-              handleNavClick("skills");
-            }}
-          >
-            SKILLS
-          </li>
-          <li
-            key="4"
-            id={`${cect === "C" ? "highlight" : ""}`}
-            className="normal"
-            onClick={() => {
-              handleNavClick("contact");
-            }}
-          >
-            CONTACT ME
-          </li>
+        <ul className="hidden flex-col md:flex md:flex-row  gap-8 items-center  font-medium">
+          {destinination.map((item, index) => {
+            return (
+              <li
+                key={index}
+                id={`${cect === item.id ? "highlight" : ""}`}
+                className="normalNav uppercase"
+                onClick={() => {
+                  handleNavClick(item.id);
+                }}
+              >
+                {" "}
+                {item.id}
+              </li>
+            );
+          })}
         </ul>
       </nav>
       <div
-        className="flex flex-col justify-start h-[100dvh] items-center w-full overflow-y-scroll snap-mandatory snap-y"
+        className="flex flex-col  w-fit h-[100dvh] overflow-y-scroll snap-mandatory snap-y"
         id="scrollBox"
         onScroll={(e) => {
           navReaction(e);
@@ -240,35 +255,29 @@ export default function Home() {
       >
         {/* HOME /////////////////////////////////////////////////////////////////*/}
 
-        <section
-          id="home"
-          className="flex justify-center gap-[10%] pt-12  h-fit min-h-full w-fit px-[100px] snap-end"
-        >
-          <div className=" w-4/6 h-fit flex flex-col pt-[64px]">
-            <h2>WELCOME TO MY PAGE</h2>
-            <h1 className="text-5xl font-bold leading-snug">
-              Hi, Yeah That's It.
-            </h1>
-            <div className="h-fit w-[400px]">
+        <section id="home" className="relative flex gap-[2rem] ">
+          <div className="h-fit flex flex-col ">
+            <h3>WELCOME TO MY PAGE</h3>
+            <h1 className="font-bold leading-snug">Hi, Yeah That's It.</h1>
+            <div className="h-fit w-[300px] max-w-[100%]">
               <h3>
                 {" "}
                 <Lorem></Lorem>
               </h3>
             </div>
-            <div className="flex h-fit w-fit gap-4 pt-12 ">
-              <FaSquareXTwitter size={"50px"} />
-              <FaSquareGithub size={"50px"} />
-              <FaLinkedin size={"50px"} />
+            <div className="flex sm:flex-row flex-col h-fit w-fit  sm:gap-4 gap-8 pt-12 ">
+              <FaSquareXTwitter size={"3.5rem"} />
+              <FaSquareGithub size={"3.5rem"} />
+              <FaLinkedin size={"3.5rem"} />
             </div>
           </div>
 
-          <div className="w-[300px] h-fit flex justify-center ;">
+          <div className="absolute h-[400px] w-[200px] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
             {" "}
             <Image
-              width={100000}
-              height={100000}
-              src="/RizzApple.png"
-              className=" min-w-[700px] h-[558px] drop-shadow-[60px_2px_5px_rgb(0,0,0,0.6)] "
+              fill
+              src="/RizzOpt.png"
+              className="  drop-shadow-[60px_2px_5px_rgb(0,0,0,0.6)] "
               alt="profile pic"
             ></Image>
           </div>
@@ -276,23 +285,20 @@ export default function Home() {
 
         {/* BIO /////////////////////////////////////////////////////////////////*/}
 
-        <section
-          id="bio"
-          className="h-fit py-24  min-h-full w-[1000px] snap-start"
-        >
+        <section id="bio" className="">
           <div className=" flex  h-[50%]">
-            <div className="h-full w-[60%] relative">
+            <div className="h-ful w-[40%]  md:w-[60%] relative">
               <div className="w-[90%] bg-slate-400 h-[95%] rounded-xl absolute top-[20%] -z-10"></div>
               <div className="w-[90%] bg-slate-300 h-[95%] rounded-xl absolute top-[5%] left-[10%]"></div>
             </div>
-            <div className="flex w-[40%] text-wrap justify-center items-end">
+            <div className=" bg-red-400 flex w-[40%] text-wrap justify-center items-end">
               {" "}
-              <h1 className="w-[100%] text-5xl font-bold leading-snug">
+              <h1 className="w-[100%] font-bold leading-snug">
                 This is all you need to know about me.
               </h1>
             </div>
           </div>
-          <div className="pl-96">
+          <div className="w-[80%]">
             {" "}
             <h3 className="">
               {" "}
@@ -303,14 +309,11 @@ export default function Home() {
 
         {/* PROECTS /////////////////////////////////////////////////////////////////*/}
 
-        <section
-          id="projects"
-          className=" relative h-fit pt-24 min-h-full w-[1000px] snap-start"
-        >
+        <section id="projects" className="relative ">
           {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
             What Have I Done ?
           </h1> */}
-          <ul className="flex flex-row gap-8 " id="listy">
+          <ul className="flex flex-row gap-8 max-w-full" id="listy">
             {projtype.map((item, index) => {
               return (
                 <li
@@ -319,7 +322,7 @@ export default function Home() {
                   onClick={() => {
                     setView(index + 1);
                   }}
-                  className="cursor-pointer border-b-0 border-x-0 border-2 border-[rgb(var(--main))] py-1 px-4"
+                  className="cursor-pointer border-b-0 border-x-0 border-[2px] border-[rgb(var(--main))] py-1 px-4 "
                 >
                   {item.name}
                 </li>
@@ -341,19 +344,19 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setSoftPos, software.length);
                   }}
-                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative  w-screen max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {software.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
-                        <div className="w-full h-fit flex gap-4 justify-start">
-                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
-                          <div className="bg-slate-200 w-[40%] h-[200px]"></div>
+                        <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
+                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
+                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px]  aspect-[2/1]  rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -362,7 +365,7 @@ export default function Home() {
                           </h3>
                         </div>
                         <div>
-                          <h3 className="font-bold">Link:</h3>
+                          <h3 className="font-bold ">Link:</h3>
                           <h3>{item.link}</h3>
                         </div>
                       </div>
@@ -370,14 +373,14 @@ export default function Home() {
                   })}
                 </div>
 
-                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                <div className="flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
                       handleLeftClick("softscroll", software.length);
                     }}
                   >
-                    <FaArrowLeftLong size={"40px"} />
+                    <FaArrowLeftLong size={"1.4rem"} />
                   </div>
                   {software.map((item, index) => {
                     return (
@@ -391,7 +394,7 @@ export default function Home() {
                             ? "light"
                             : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}
@@ -401,7 +404,7 @@ export default function Home() {
                       handleRightClick("softscroll", software.length);
                     }}
                   >
-                    <FaArrowRightLong size={"40px"} />
+                    <FaArrowRightLong size={"1.4rem"} />
                   </div>
                 </div>
               </>
@@ -421,18 +424,19 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setMlaiPos, mlai.length);
                   }}
-                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative w-screen max-w-[100%] flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {mlai.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
-                        <div className="w-full h-fit flex gap-4 justify-start">
-                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
+                        <div className="h-fit flex flex-wrap gap-4 justify-start">
+                          <div className="bg-slate-400 max-w-[300px] w-[100%] h-[200px] rounded-lg"></div>
+                          <div className="bg-slate-400 max-w-[300px] w-[100%] h-[200px] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -441,7 +445,7 @@ export default function Home() {
                           </h3>
                         </div>
                         <div>
-                          <h3 className="font-bold">Link:</h3>
+                          <h3 className="font-bold ">Link:</h3>
                           <h3>{item.link}</h3>
                         </div>
                       </div>
@@ -455,7 +459,7 @@ export default function Home() {
                       handleLeftClick("mlaiscroll", mlai.length);
                     }}
                   >
-                    <FaArrowLeftLong size={"40px"} />
+                    <FaArrowLeftLong size={"22px"} />
                   </div>
                   {mlai.map((item, index) => {
                     return (
@@ -477,7 +481,7 @@ export default function Home() {
                       handleRightClick("mlaiscroll", mlai.length);
                     }}
                   >
-                    <FaArrowRightLong size={"40px"} />
+                    <FaArrowRightLong size={"22px"} />
                   </div>
                 </div>
               </>
@@ -497,7 +501,7 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setTelPos, telecom.length);
                   }}
-                  className="relative w-[100%]  flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative  w-screen max-w-[100%] flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {telecom.map((item, index) => {
                     return (
@@ -531,7 +535,7 @@ export default function Home() {
                       handleLeftClick("telscroll", telecom.length);
                     }}
                   >
-                    <FaArrowLeftLong size={"40px"} />
+                    <FaArrowLeftLong size={"22px"} />
                   </div>
                   {telecom.map((item, index) => {
                     return (
@@ -555,7 +559,7 @@ export default function Home() {
                       handleRightClick("telscroll", telecom.length);
                     }}
                   >
-                    <FaArrowRightLong size={"40px"} />
+                    <FaArrowRightLong size={"22px"} />
                   </div>
                 </div>
               </>
@@ -564,10 +568,7 @@ export default function Home() {
 
         {/* SKILLS /////////////////////////////////////////////////////////////////*/}
 
-        <section
-          id="skills"
-          className="pt-24 flex flex-col gap-8 h-fit min-h-full w-[1000px] snap-end"
-        >
+        <section id="skills" className="flex flex-col gap-8 ">
           <div>
             <label className="font-bold uppercase">Soft Skills</label>
 
@@ -588,10 +589,13 @@ export default function Home() {
               <li>LATEX</li>
             </ul>
           </div>
-          <div>
+          <div className="overflow-hidden">
             <label className="font-bold uppercase">Tech Stack</label>
 
-            <div id="scroll" className=" flex w-full overflow-hidden ml-16">
+            <div
+              id="scroll"
+              className=" flex w-[calc(100vw-128px)] overflow-hidden ml-16"
+            >
               <div id="logodiv" className="flex">
                 <BiLogoFigma />
                 <BiLogoHtml5 />
@@ -625,13 +629,13 @@ export default function Home() {
 
         {/* CONTACT /////////////////////////////////////////////////////////////////*/}
 
-        <section id="contact" className="h-fit min-h-[50%] w-[1000px] snap-end">
+        <section id="contact" className="h-[50%] ] max-h-[512px] snap-end">
           <div className="flex flex-col gap-4">
             {" "}
             <label className="font-bold uppercase">
               Leave me Feedback below
             </label>
-            <textarea></textarea>
+            <textarea rows="8"></textarea>
             <button>Submit Response</button>
           </div>
         </section>
