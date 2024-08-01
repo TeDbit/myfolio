@@ -255,27 +255,41 @@ export default function Home() {
       >
         {/* HOME /////////////////////////////////////////////////////////////////*/}
 
-        <section id="home" className="relative flex gap-[2rem] ">
-          <div className="h-fit flex flex-col ">
+        <section id="home" className="relative flex gap-[2rem] justify-center ">
+          <div className="h-fit flex flex-col w-[90%] sm:w-[45%] ">
             <h3>WELCOME TO MY PAGE</h3>
             <h1 className="font-bold leading-snug">Hi, Yeah That's It.</h1>
-            <div className="h-fit w-[300px] max-w-[100%]">
+            <div className="h-fit  ">
               <h3>
                 {" "}
                 <Lorem></Lorem>
               </h3>
             </div>
-            <div className="flex sm:flex-row flex-col h-fit w-fit  sm:gap-4 gap-8 pt-12 ">
-              <FaSquareXTwitter size={"3.5rem"} />
-              <FaSquareGithub size={"3.5rem"} />
-              <FaLinkedin size={"3.5rem"} />
+            <div className="flex pt-12 justify-around ">
+              <div className="flex sm:flex-row flex-col w-fit  sm:gap-4 gap-8 justify-center ">
+                <FaSquareXTwitter size={"3.5rem"} />
+                <FaSquareGithub size={"3.5rem"} />
+                <FaLinkedin size={"3.5rem"} />
+              </div>
+
+              <div className=" block sm:hidden bg-red h-full w-[40%] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
+                {" "}
+                <Image
+                  height={"100"}
+                  width={"150"}
+                  src="/RizzOpt.png"
+                  className="  drop-shadow-[60px_2px_5px_rgb(0,0,0,0.6)] "
+                  alt="profile pic"
+                ></Image>
+              </div>
             </div>
           </div>
 
-          <div className="absolute h-[400px] w-[200px] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
+          <div className=" hidden sm:block bg-red h-full w-[40%] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
             {" "}
             <Image
-              fill
+              height={"100"}
+              width={"250"}
               src="/RizzOpt.png"
               className="  drop-shadow-[60px_2px_5px_rgb(0,0,0,0.6)] "
               alt="profile pic"
@@ -285,21 +299,20 @@ export default function Home() {
 
         {/* BIO /////////////////////////////////////////////////////////////////*/}
 
-        <section id="bio" className="">
+        <section id="bio" className=" justify-center">
           <div className=" flex  h-[50%]">
-            <div className="h-ful w-[40%]  md:w-[60%] relative">
+            <div className="h-ful w-[50%]  relative">
               <div className="w-[90%] bg-slate-400 h-[95%] rounded-xl absolute top-[20%] -z-10"></div>
               <div className="w-[90%] bg-slate-300 h-[95%] rounded-xl absolute top-[5%] left-[10%]"></div>
             </div>
-            <div className=" bg-red-400 flex w-[40%] text-wrap justify-center items-end">
+            <div className="  flex w-[50%] text-wrap justify-center items-end">
               {" "}
               <h1 className="w-[100%] font-bold leading-snug">
                 This is all you need to know about me.
               </h1>
             </div>
           </div>
-          <div className="w-[80%]">
-            {" "}
+          <div className="w-[80%] md:pl-[50%] md:pt-[0px] pt-[54px]">
             <h3 className="">
               {" "}
               <Lorem></Lorem>
