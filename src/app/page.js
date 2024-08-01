@@ -215,7 +215,7 @@ export default function Home() {
   };
 
   return (
-    <main className="lg:items-center flex min-h-screen max-w-screen flex-col gap-10  items-start">
+    <main className="lg:items-center flex min-h-screen max-w-screen flex-col gap-10 items-start px-8 ">
       <nav className="bg-[rgb(var(--main))] z-10 flex flex-row justify-between w-full max-w-[1024px] h-12 fixed top-0">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
@@ -255,7 +255,7 @@ export default function Home() {
       >
         {/* HOME /////////////////////////////////////////////////////////////////*/}
 
-        <section id="home" className="relative flex gap-[2rem] justify-center ">
+        <section id="home" className="relative flex gap-[2rem] ">
           <div className="h-fit flex flex-col w-[90%] sm:w-[45%] ">
             <h3>WELCOME TO MY PAGE</h3>
             <h1 className="font-bold leading-snug">Hi, Yeah That's It.</h1>
@@ -266,7 +266,7 @@ export default function Home() {
               </h3>
             </div>
             <div className="flex pt-12 justify-around ">
-              <div className="flex sm:flex-row flex-col w-fit  sm:gap-4 gap-8 justify-center ">
+              <div className="flex sm:flex-row flex-col w-fit sm:gap-4 gap-8 justify-center ">
                 <FaSquareXTwitter size={"3.5rem"} />
                 <FaSquareGithub size={"3.5rem"} />
                 <FaLinkedin size={"3.5rem"} />
@@ -326,7 +326,7 @@ export default function Home() {
           {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
             What Have I Done ?
           </h1> */}
-          <ul className="flex flex-row gap-8 max-w-full" id="listy">
+          <ul className="flex sm:justify-start justify-center flex-row gap-8 max-w-full" id="listy">
             {projtype.map((item, index) => {
               return (
                 <li
@@ -357,7 +357,7 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setSoftPos, software.length);
                   }}
-                  className="relative  w-screen max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative  w-[80vw] max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {software.map((item, index) => {
                     return (
@@ -581,7 +581,7 @@ export default function Home() {
 
         {/* SKILLS /////////////////////////////////////////////////////////////////*/}
 
-        <section id="skills" className="flex flex-col gap-8 ">
+        <section id="skills" className="flex flex-col gap-10 ">
           <div>
             <label className="font-bold uppercase">Soft Skills</label>
 
