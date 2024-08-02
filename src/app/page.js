@@ -135,6 +135,8 @@ export default function Home() {
     },
   ];
 
+  const telecom = [];
+
   useEffect(() => {
     if (navigator.userAgent.indexOf("iPhone") > -1) {
       document
@@ -145,8 +147,6 @@ export default function Home() {
         );
     }
   });
-
-  const telecom = [];
 
   const navReaction = (e) => {
     const { scrollTop, scrollHeight, clientHeight } = e.target;
@@ -337,7 +337,7 @@ export default function Home() {
 
         {/* PROECTS /////////////////////////////////////////////////////////////////*/}
 
-        <section id="projects" className="relative ">
+        <section id="projects" className="relative">
           {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
             What Have I Done ?
           </h1> */}
@@ -375,18 +375,19 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setSoftPos, software.length);
                   }}
-                  className="relative  w-[80vw] max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative w-[80vw] max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {software.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
+                        className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
-                        <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
-                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
+                        <div className="w-full h-fit flex gap-4 justify-start">
+                          <div className="bg-slate-400 max-w-full w-[15rem] sm:w-[28rem] aspect-[1.8/1] rounded-lg"></div>
+                          <div className="bg-slate-300 h-full aspect-[1/2] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -460,12 +461,12 @@ export default function Home() {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
+                        className="flex flex-col gap-10 w-full pt-10 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
-                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
+                          <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -536,12 +537,12 @@ export default function Home() {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
+                        className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
-                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
+                          <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
