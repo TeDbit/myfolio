@@ -44,11 +44,13 @@ section {
   max-width: 1024px;
   /* margin: 0 auto; */
   scroll-snap-align: start;
+  /* border-bottom: 1px solid rgb(var(--sec));
+  border-left: 1px solid rgb(var(--sec)); */
 }
 
 #highlight {
   position: relative;
-  font-size: 50px;
+  font-size: 20px;
   transition: all 0.15s ease-in;
 }
 
@@ -165,6 +167,12 @@ li {
   li {
     font-size: 16px;
   }
+  #highlight {
+    display: block !important;
+    position: relative;
+    font-size: 20px;
+    transition: all 0.15s ease-in;
+  }
 }
 
 @media only screen and (max-width: 390px) {
@@ -181,6 +189,10 @@ li {
   li {
     font-size: 14px;
   }
+
+  .normalNav {
+    display: none;
+  }
 }
 
 @media only screen and (max-height: 625px) {
@@ -196,7 +208,7 @@ li {
 
   section {
     min-height: 624px;
-  } 
+  }
 
   @media only screen and (max-width: 900px) {
     h1 {

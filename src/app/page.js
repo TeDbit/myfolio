@@ -24,6 +24,12 @@ import {
   BiLogoTailwindCss,
   BiLogoTypescript,
 } from "react-icons/bi";
+import {
+  HiOutlineMenu,
+  HiOutlineMenuAlt2,
+  HiOutlineMenuAlt3,
+} from "react-icons/hi";
+
 import { useEffect, useRef, useMemo, useState } from "react";
 
 const Lorem = (n) => {
@@ -38,7 +44,7 @@ const Lorem = (n) => {
 };
 
 export default function Home() {
-  const [cect, setCect] = useState();
+  const [cect, setCect] = useState("");
   const [view, setView] = useState(1);
   const [softpos, setSoftPos] = useState(0);
   const [mlaipos, setMlaiPos] = useState(0);
@@ -55,7 +61,7 @@ export default function Home() {
     { id: "bio" },
     { id: "projects" },
     { id: "skills" },
-    { id: "contacts" },
+    { id: "contact" },
   ];
 
   const software = [
@@ -160,7 +166,7 @@ export default function Home() {
     } else if (0.9 > ratio > 0.65) {
       setCect("skills");
     } else if (ratio > 0.9) {
-      setCect("contacts");
+      setCect("contact");
     }
   };
 
@@ -229,7 +235,7 @@ export default function Home() {
     <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
       <nav className="max-w-[1024px] w-full bg-[rgb(var(--main))] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
         {" "}
-        <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
+        <div className="flex flex-row w-[5rem] h-full justify-between  items-center ">
           {/* <Image
             width={40}
             height={40}
@@ -237,28 +243,33 @@ export default function Home() {
             className="w-[40px] h-[40px] rounded-full"
             alt="profile pic"
           ></Image> */}
-          <div className="bg-[rgb(var(--sec))] flex items-center justify-center font-extrabold text-xl text-[rgb(var(--main))] w-[40px] h-[40px] rounded-full ">
+          <div className="bg-[rgb(var(--sec))] flex items-center justify-center font-extrabold text-xl text-[rgb(var(--main))] w-[2.7rem] h-[2.7rem] rounded-full ">
             T
           </div>
           <h3 className=" font-bold ">ted</h3>
         </div>
-        <ul className="hidden flex-col md:flex md:flex-row  gap-8 items-center  font-medium">
-          {destinination.map((item, index) => {
-            return (
-              <li
-                key={index}
-                id={`${cect === item.id ? "highlight" : ""}`}
-                className="normalNav uppercase"
-                onClick={() => {
-                  handleNavClick(item.id);
-                }}
-              >
-                {" "}
-                {item.id}
-              </li>
-            );
-          })}
-        </ul>
+        <div className="flex  items-center justify-between h-full">
+          <ul className=" flex flex-col  md:flex-row  gap-8 items-center  font-medium">
+            {destinination.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  id={`${cect === item.id ? "highlight" : ""}`}
+                  className="normalNav uppercase"
+                  onClick={() => {
+                    handleNavClick(item.id);
+                  }}
+                >
+                  {" "}
+                  {item.id}
+                </li>
+              );
+            })}
+          </ul>
+          {(cect === "" && (
+            <HiOutlineMenu size="24px" className="md:hidden" />
+          )) || <HiOutlineMenuAlt3 size="24px" className="md:hidden" />}
+        </div>
       </nav>
 
       <div
