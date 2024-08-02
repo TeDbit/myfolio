@@ -27,6 +27,10 @@ body {
     rgb(var(--main));
 }
 
+main{
+  height: 100dvh;
+}
+
 section {
   height: 100%;
   padding: 5dvh 0px 0px 0px;
@@ -174,11 +178,35 @@ li {
   }
 }
 
-@media only screen and (max-height: 530px) {
+@media only screen and (max-height: 600px) {
+   main{
+    height: 700px;
+  }
 
   #scrollBox {
-    height: fit-content;
-    max-height: fit-content;
-    scroll-snap-type: none;
+    min-height: calc(700px - 4rem);
+    scroll-snap-type: mandatory;
   }
+
+  @media only screen and (max-width: 900px) {
+  :root {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  li {
+    font-size: 14px;
+  }
+}
+
+  #scrollBox {
+    scroll-snap-type: none;
+    /* overflow: hidden; */
+  }
+ 
 }
