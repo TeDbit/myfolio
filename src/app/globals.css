@@ -173,6 +173,9 @@ li {
     font-size: 20px;
     transition: all 0.15s ease-in;
   }
+    .normalNav {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 390px) {
@@ -190,9 +193,7 @@ li {
     font-size: 14px;
   }
 
-  .normalNav {
-    display: none;
-  }
+
 }
 
 @media only screen and (max-height: 625px) {
