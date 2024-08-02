@@ -226,7 +226,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative lg:items-center flex h-[100dvh] lg:min-w-[100dvh] flex-col  items-start px-8 ">
+    <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
       <nav className="max-w-[1024px] w-full bg-[rgb(var(--main))] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
@@ -659,7 +659,10 @@ export default function Home() {
 
         {/* CONTACT /////////////////////////////////////////////////////////////////*/}
 
-        <section id="contact" className="h-[50%] ] max-h-[512px] snap-end">
+        <section
+          id="contact"
+          className="h-[50%] ] min-h-[312px] max-h-[512px] snap-end"
+        >
           <div className="flex flex-col gap-4">
             {" "}
             <label className="font-bold uppercase">
