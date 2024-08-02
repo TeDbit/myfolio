@@ -226,7 +226,7 @@ export default function Home() {
   };
 
   return (
-    <main className="relative lg:items-center flex  min-w-[100dvh] flex-col  items-start px-8 ">
+    <main className="relative lg:items-center flex h-[100dvh] lg:min-w-[100dvh] flex-col  items-start px-8 ">
       <nav className="max-w-[1024px] w-full bg-[rgb(var(--main))] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
