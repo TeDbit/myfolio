@@ -273,7 +273,7 @@ export default function Home() {
       </nav>
 
       <div
-        className="flex flex-col w-fit h-[calc(100dvh-4rem)] overflow-y-scroll snap-mandatory snap-y"
+        className="flex flex-col w-fit h-[calc(100dvh-4rem)] overflow-y-scroll snap-mandatory snap-y scrollbar-hide"
         id="scrollBox"
         onScroll={(e) => {
           navReaction(e);
