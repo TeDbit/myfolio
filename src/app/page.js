@@ -135,6 +135,17 @@ export default function Home() {
     },
   ];
 
+  useEffect(() => {
+    if (navigator.userAgent.indexOf("iPhone") > -1) {
+      document
+        .querySelector("[name=viewport]")
+        .setAttribute(
+          "content",
+          "width=device-width,initial-scale=1,maximum-scale=1"
+        );
+    }
+  });
+
   const telecom = [];
 
   const navReaction = (e) => {
@@ -215,8 +226,8 @@ export default function Home() {
   };
 
   return (
-    <main className="lg:items-center flex min-h-screen max-w-screen flex-col gap-10 items-start px-8 ">
-      <nav className="bg-[rgb(var(--main))] z-10 flex flex-row justify-between w-full max-w-[1024px] h-12 fixed top-0">
+    <main className="relative lg:items-center flex h-screen max-w-screen flex-col  items-start px-8 ">
+      <nav className="max-w-[1024px] w-full bg-[rgb(var(--main))] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
         {" "}
         <div className="flex flex-row w-[80px] h-full justify-between  items-center ">
           {/* <Image
@@ -226,6 +237,9 @@ export default function Home() {
             className="w-[40px] h-[40px] rounded-full"
             alt="profile pic"
           ></Image> */}
+          <div className="bg-[rgb(var(--sec))] flex items-center justify-center font-extrabold text-xl text-[rgb(var(--main))] w-[40px] h-[40px] rounded-full ">
+            T
+          </div>
           <h3 className=" font-bold ">ted</h3>
         </div>
         <ul className="hidden flex-col md:flex md:flex-row  gap-8 items-center  font-medium">
@@ -246,8 +260,9 @@ export default function Home() {
           })}
         </ul>
       </nav>
+
       <div
-        className="flex flex-col  w-fit h-[100dvh] overflow-y-scroll snap-mandatory snap-y"
+        className="flex flex-col w-fit h-[calc(100dvh-4rem)] overflow-y-scroll snap-mandatory snap-y"
         id="scrollBox"
         onScroll={(e) => {
           navReaction(e);
@@ -265,14 +280,14 @@ export default function Home() {
                 <Lorem></Lorem>
               </h3>
             </div>
-            <div className="flex pt-12 justify-around ">
-              <div className="flex sm:flex-row flex-col w-fit sm:gap-4 gap-8 justify-center ">
+            <div className="flex pt-12 justify-start ">
+              <div className="flex sm:flex-row flex-col w-fit pr-[30%] sm:gap-4 gap-8 justify-center justify-self-start">
                 <FaSquareXTwitter size={"3.5rem"} />
                 <FaSquareGithub size={"3.5rem"} />
                 <FaLinkedin size={"3.5rem"} />
               </div>
 
-              <div className=" block sm:hidden bg-red h-full w-[40%] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
+              <div className=" block sm:hidden h-full w-[40%] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
                 {" "}
                 <Image
                   height={"100"}
@@ -326,7 +341,10 @@ export default function Home() {
           {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
             What Have I Done ?
           </h1> */}
-          <ul className="flex sm:justify-start justify-center flex-row gap-8 max-w-full" id="listy">
+          <ul
+            className="flex sm:justify-start justify-center flex-row gap-8 max-w-full"
+            id="listy"
+          >
             {projtype.map((item, index) => {
               return (
                 <li
@@ -369,7 +387,6 @@ export default function Home() {
                         <h3 className="font-bold uppercase">{item.title}</h3>
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
-                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px]  aspect-[2/1]  rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -386,7 +403,7 @@ export default function Home() {
                   })}
                 </div>
 
-                <div className="flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
+                <div className="absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
@@ -437,19 +454,18 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setMlaiPos, mlai.length);
                   }}
-                  className="relative w-screen max-w-[100%] flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative  w-[80vw] max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {mlai.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-2"
+                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
-                        <div className="h-fit flex flex-wrap gap-4 justify-start">
-                          <div className="bg-slate-400 max-w-[300px] w-[100%] h-[200px] rounded-lg"></div>
-                          <div className="bg-slate-400 max-w-[300px] w-[100%] h-[200px] rounded-lg"></div>
+                        <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
+                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -465,14 +481,14 @@ export default function Home() {
                     );
                   })}
                 </div>
-                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                <div className="absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
                       handleLeftClick("mlaiscroll", mlai.length);
                     }}
                   >
-                    <FaArrowLeftLong size={"22px"} />
+                    <FaArrowLeftLong size={"1.4rem"} />
                   </div>
                   {mlai.map((item, index) => {
                     return (
@@ -484,7 +500,7 @@ export default function Home() {
                         id={
                           selectDot(index, mlai.length, mlaipos) ? "light" : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}
@@ -494,7 +510,7 @@ export default function Home() {
                       handleRightClick("mlaiscroll", mlai.length);
                     }}
                   >
-                    <FaArrowRightLong size={"22px"} />
+                    <FaArrowRightLong size={"1.4rem"} />
                   </div>
                 </div>
               </>
@@ -514,18 +530,18 @@ export default function Home() {
                   onScroll={(e) => {
                     projScroll(e, setTelPos, telecom.length);
                   }}
-                  className="relative  w-screen max-w-[100%] flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
+                  className="relative  w-[80vw] max-w-full flex overflow-scroll snap-mandatory snap-x  scrollbar-hide"
                 >
                   {telecom.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="flex flex-col w-full pt-8 gap-8 snap-start pr-24"
+                        className="flex flex-col w-full pt-8 md:gap-8 snap-start pr-2"
                       >
                         {" "}
                         <h3 className="font-bold uppercase">{item.title}</h3>
-                        <div className="w-full h-fit flex gap-4 justify-start">
-                          <div className="bg-slate-400 w-[40%] h-[200px] rounded-lg"></div>
+                        <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
+                          <div className="bg-slate-400 max-w-full w-[250px] sm:w-[350px] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
                           <h3 className="font-bold">Description:</h3>
@@ -541,14 +557,14 @@ export default function Home() {
                     );
                   })}
                 </div>
-                <div className="flex gap-3 pt-9 w-full h-32 justify-center items-center">
+                <div className="absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
                       handleLeftClick("telscroll", telecom.length);
                     }}
                   >
-                    <FaArrowLeftLong size={"22px"} />
+                    <FaArrowLeftLong size={"1.4rem"} />
                   </div>
                   {telecom.map((item, index) => {
                     return (
@@ -562,7 +578,7 @@ export default function Home() {
                             ? "light"
                             : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-4 w-4 cursor-pointer rounded-sm"
+                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}
@@ -572,7 +588,7 @@ export default function Home() {
                       handleRightClick("telscroll", telecom.length);
                     }}
                   >
-                    <FaArrowRightLong size={"22px"} />
+                    <FaArrowRightLong size={"1.4rem"} />
                   </div>
                 </div>
               </>
