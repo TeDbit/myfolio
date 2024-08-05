@@ -29,6 +29,7 @@ import {
   HiOutlineMenuAlt2,
   HiOutlineMenuAlt3,
 } from "react-icons/hi";
+import { HiOutlineXMark } from "react-icons/hi2";
 
 import { useEffect, useRef, useMemo, useState } from "react";
 
@@ -50,6 +51,7 @@ export default function Home() {
   const [mlaipos, setMlaiPos] = useState(0);
   const [telpos, setTelPos] = useState(0);
   const [arrpos, setArrPos] = useState(false);
+  const [drop, setDrop] = useState(false);
 
   const projtype = [
     { name: "Soft Dev" },
@@ -233,29 +235,64 @@ export default function Home() {
 
   return (
     <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
-      <nav className="max-w-[1024px] w-full bg-[rgb(var(--main))] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
-        {" "}
-        <div className="flex flex-row w-[5rem] h-full justify-between  items-center ">
-          {/* <Image
+      <header
+        className="w-screen absolute top-0 right-0 px-8 "
+        onClick={() => console.log(document.body.clientWidth > 768 || !drop,drop)}
+      >
+        <nav className=" max-w-[1024px] w-full bg-[var(--main)] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
+          {" "}
+          <div className="flex flex-row w-[5rem] h-full justify-between  items-center ">
+            {/* <Image
             width={40}
             height={40}
             src="/RizzApple.jpeg"
             className="w-[40px] h-[40px] rounded-full"
             alt="profile pic"
           ></Image> */}
-          <div className="bg-[rgb(var(--sec))] flex items-center justify-center font-extrabold text-xl text-[rgb(var(--main))] w-[2.7rem] h-[2.7rem] rounded-full ">
-            T
+            <div className="bg-[var(--high)] flex items-center justify-center font-extrabold text-xl text-[var(--main)] w-[2.7rem] h-[2.7rem] rounded-full ">
+              T
+            </div>
+            <h3 className=" font-bold ">ted</h3>
           </div>
-          <h3 className=" font-bold ">ted</h3>
-        </div>
-        <div className="flex  items-center justify-between h-full">
-          <ul className=" flex flex-col  md:flex-row  gap-8 items-center  font-medium">
+          <div
+            className="flex  items-center justify-between h-full"
+            onClick={() => setDrop(!drop)}
+          >
+            {(document.body.clientWidth > 768 || !drop) && (
+              <>
+                <ul className=" flex flex-col  md:flex-row  gap-8 items-center  font-medium">
+                  {destinination.map((item, index) => {
+                    return (
+                      <li
+                        key={index}
+                        id={`${cect === item.id ? "highlight" : ""}`}
+                        className="normalNav uppercase cursor-pointer"
+                        onClick={() => {
+                          handleNavClick(item.id);
+                        }}
+                      >
+                        {" "}
+                        {item.id}
+                      </li>
+                    );
+                  })}
+                </ul>
+                {(cect === "" && (
+                  <HiOutlineMenu size="24px" className="hide" />
+                )) || <HiOutlineMenuAlt3 size="24px" className="hide" />}
+              </>
+            )}
+            {drop && <HiOutlineXMark size="24px" className="hide" />}
+          </div>
+        </nav>
+        {drop && (
+          <ul className="hide z-[20] drop-shadow-[0_2px_2px_#08080b80] py-1 pl-[1rem] pr-[3rem] bg-[var(--main)] absolute top-[102%] right-2 flex flex-col gap-6 items-start rounded  font-medium">
             {destinination.map((item, index) => {
               return (
                 <li
                   key={index}
-                  id={`${cect === item.id ? "highlight" : ""}`}
-                  className="normalNav uppercase"
+                  id={`${cect === item.id ? "highlight2" : ""}`}
+                  className="uppercase cursor-pointer"
                   onClick={() => {
                     handleNavClick(item.id);
                   }}
@@ -266,11 +303,8 @@ export default function Home() {
               );
             })}
           </ul>
-          {(cect === "" && (
-            <HiOutlineMenu size="24px" className="md:hidden" />
-          )) || <HiOutlineMenuAlt3 size="24px" className="md:hidden" />}
-        </div>
-      </nav>
+        )}
+      </header>
 
       <div
         className="flex flex-col w-fit h-[calc(100dvh-4rem)] overflow-y-scroll snap-mandatory snap-y scrollbar-hide"
@@ -281,7 +315,10 @@ export default function Home() {
       >
         {/* HOME /////////////////////////////////////////////////////////////////*/}
 
-        <section id="home" className="relative flex gap-[2rem] ">
+        <section
+          id="home"
+          className="relative flex  items-center justify-between  pt-[4rem]"
+        >
           <div className="h-fit flex flex-col w-[90%] sm:w-[45%] ">
             <h3>WELCOME TO MY PAGE</h3>
             <h1 className="font-bold leading-snug">Hi, Yeah That's It.</h1>
@@ -292,7 +329,7 @@ export default function Home() {
               </h3>
             </div>
             <div className="flex pt-12 justify-start ">
-              <div className="flex sm:flex-row flex-col w-fit pr-[30%] sm:gap-4 gap-8 justify-center justify-self-start">
+              <div className="text-[var(--high)] flex sm:flex-row flex-col w-fit pr-[30%] sm:gap-4 gap-8 justify-center justify-self-start">
                 <FaSquareXTwitter size={"3.5rem"} />
                 <FaSquareGithub size={"3.5rem"} />
                 <FaLinkedin size={"3.5rem"} />
@@ -311,7 +348,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className=" hidden sm:block bg-red h-full w-[40%] bottom-[10%]  right-[10%] sm:bottom-[20%] sm:right-[10%]">
+          <div className=" hidden sm:block h-fit w-[40%] ">
             {" "}
             <Image
               height={"100"}
@@ -364,7 +401,7 @@ export default function Home() {
                   onClick={() => {
                     setView(index + 1);
                   }}
-                  className="cursor-pointer border-b-0 border-x-0 border-[2px] border-[rgb(var(--main))] py-1 px-4 "
+                  className="cursor-pointer border-b-0 border-x-0 border-[2px] border-[var(--main)] py-1 px-4 "
                 >
                   {item.name}
                 </li>
@@ -415,7 +452,7 @@ export default function Home() {
                   })}
                 </div>
 
-                <div className="absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
+                <div className="text-[var(--high)] absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
@@ -436,7 +473,7 @@ export default function Home() {
                             ? "light"
                             : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
+                        className="border-[var(--sec)] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}
@@ -512,7 +549,7 @@ export default function Home() {
                         id={
                           selectDot(index, mlai.length, mlaipos) ? "light" : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
+                        className="border-[var(--sec)] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}
@@ -590,7 +627,7 @@ export default function Home() {
                             ? "light"
                             : ""
                         }
-                        className="border-[rgb(var(--sec))] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
+                        className="border-[var(--sec)] border h-[1rem] w-[1rem] cursor-pointer rounded-sm"
                       ></div>
                     );
                   })}

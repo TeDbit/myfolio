@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --sec: 0, 18, 51;
-  --main: 202, 192, 179;
+  --sec: #001233;
+  --main: #cac0b3;
+  --high: #ef233c;
+  /* --high: #990033; */
+  /* --high:#991b1b; */
+  /* --high: #931621; */
   --background-end-rgb: 202, 192, 179;
 }
 
@@ -15,9 +19,9 @@
 }
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 202, 192, 179;
-    --background-start-rgb:0, 18, 51;
-    --background-end-rgb:0, 18, 51;
+    --sec: #cac0b3;
+    --main: #001233;
+    --background-end-rgb: 202, 192, 179;
   }
 } */
 
@@ -27,17 +31,17 @@ body {
 }
 
 body {
-  color: rgb(var(--sec));
-  background: linear-gradient(to bottom, transparent, rgb(var(--main)))
-    rgb(var(--main));
+  color: var(--sec);
+  background: linear-gradient(to bottom, transparent, var(--main)) var(--main);
 }
 
 main {
   height: 100dvh;
 }
-
+nav {
+}
 section {
-  padding: 5dvh 0px 0px 0px;
+  padding: calc(5dvh + 4rem) 0px 0px 0px;
   height: 100%;
   max-height: 1024px;
   width: 100%;
@@ -50,8 +54,13 @@ section {
 
 #highlight {
   position: relative;
-  font-size: 30yyyyyypx;
   transition: all 0.15s ease-in;
+  color: var(--high);
+}
+#highlight2 {
+  position: relative;
+  transition: all 0.15s ease-in;
+  color: var(--high);
 }
 
 #highlight::after {
@@ -60,13 +69,13 @@ section {
   left: 0;
   position: absolute;
   width: 100%;
-  background-color: #991b1b;
+  background-color: var(--high);
   transition: width 0.15s;
 }
 
 #selected {
-  border: 2px solid rgb(var(--sec));
-  border-bottom: 2px solid rgb(var(--main));
+  border: 2px solid var(--high);
+  border-bottom: 2px solid var(--main);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -82,20 +91,21 @@ section {
   content: "";
   width: 100%;
   height: 2px;
-  background-color: rgb(var(--sec));
+  background-color: var(--high);
 }
 
 button {
   height: fit-content;
   width: fit-content;
   padding: 16px;
-  border: 1px solid rgb(var(--sec));
+  color: var(--high);
+  border: 1px solid var(--high);
   border-radius: 8px;
 }
 
 textarea {
   padding: 4px 4px;
-  border: 1px solid rgb(var(--sec));
+  border: 1px solid var(--sec);
   border-radius: 8px;
   background-color: transparent;
   resize: none;
@@ -112,7 +122,7 @@ textarea:focus {
 }
 
 #light {
-  background-color: rgb(var(--sec));
+  border-color: var(--high);
 }
 #logodiv {
   animation: 15s slide infinite linear;
@@ -154,6 +164,10 @@ li {
   font-size: 18px;
 }
 
+.hide {
+  display: none;
+}
+
 @media only screen and (max-width: 768px) {
   :root {
     font-size: 14px;
@@ -167,13 +181,20 @@ li {
   li {
     font-size: 16px;
   }
+
+  .hide {
+    display: flex;
+  }
+
   #highlight {
     display: block !important;
     position: relative;
-    font-size: 20px;
+    color: var(--sec);
+    font-size: 15px;
     transition: all 0.15s ease-in;
+    animation: 200ms enter 1 linear;
   }
-    .normalNav {
+  .normalNav {
     display: none;
   }
 }
@@ -192,8 +213,6 @@ li {
   li {
     font-size: 14px;
   }
-
-
 }
 
 @media only screen and (max-height: 625px) {
@@ -226,5 +245,14 @@ li {
       scroll-snap-type: none;
       /* overflow: hidden; */
     }
+  }
+}
+
+@keyframes enter {
+  from {
+    transform: translateX(-5px);
+  }
+  to {
+    transform: translateX(0);
   }
 }
