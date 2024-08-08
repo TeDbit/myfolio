@@ -236,8 +236,10 @@ export default function Home() {
   return (
     <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
       <header
-        className="w-screen absolute top-0 right-0 px-8 "
-        onClick={() => console.log(document.body.clientWidth > 768 || !drop,drop)}
+        className="w-screen absolute top-0 right-0 px-8 justify-center flex "
+        onClick={() =>
+          console.log(document.body.clientWidth > 768 || !drop, drop)
+        }
       >
         <nav className=" max-w-[1024px] w-full bg-[var(--main)] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
           {" "}
@@ -285,29 +287,30 @@ export default function Home() {
             {drop && <HiOutlineXMark size="24px" className="hide" />}
           </div>
         </nav>
-        {drop && (
-          <ul className="hide z-[20] drop-shadow-[0_2px_2px_#08080b80] py-1 pl-[1rem] pr-[3rem] bg-[var(--main)] absolute top-[102%] right-2 flex flex-col gap-6 items-start rounded  font-medium">
-            {destinination.map((item, index) => {
-              return (
-                <li
-                  key={index}
-                  id={`${cect === item.id ? "highlight2" : ""}`}
-                  className="uppercase cursor-pointer"
-                  onClick={() => {
-                    handleNavClick(item.id);
-                  }}
-                >
-                  {" "}
-                  {item.id}
-                </li>
-              );
-            })}
-          </ul>
-        )}
+        <ul
+          id={`${drop ? "" : "drop"}`}
+          className="hide z-[20] drop-shadow-[0_2px_2px_#08080b80] overflow-hidden py-1 pl-[1rem] pr-[3rem] bg-[var(--main)] absolute top-[102%] right-2 flex flex-col gap-6 items-start rounded  font-medium"
+        >
+          {destinination.map((item, index) => {
+            return (
+              <li
+                key={index}
+                id={`${cect === item.id ? "highlight2" : ""}`}
+                className="uppercase cursor-pointer"
+                onClick={() => {
+                  handleNavClick(item.id);
+                }}
+              >
+                {" "}
+                {item.id}
+              </li>
+            );
+          })}
+        </ul>
       </header>
 
       <div
-        className="flex flex-col w-fit h-[calc(100dvh-4rem)] overflow-y-scroll snap-mandatory snap-y scrollbar-hide"
+        className="flex flex-col w-fit h-[calc(100dvh)] overflow-y-scroll snap-mandatory snap-y"
         id="scrollBox"
         onScroll={(e) => {
           navReaction(e);

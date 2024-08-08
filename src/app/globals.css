@@ -184,6 +184,15 @@ li {
 
   .hide {
     display: flex;
+    height: 166px;
+    transition: opacity 0.15s, height 0.15s ease-in-out;
+    visibility: visible;
+    opacity: 100%;
+  }
+  .hide#drop {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
 
   #highlight {
