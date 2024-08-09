@@ -202,6 +202,20 @@ export default function Home() {
     scrollCont.scrollTo(0, position);
   };
 
+  const dropclick = () => {
+    if (!drop) {
+      document.addEventListener("click", clickListener);
+    }
+  };
+  const clickListener = (e) => {
+    const eventId = e.target.id;
+    console.log(eventId);
+    if (!eventId.includes("dropped")) {
+      setDrop(false);
+      return document.removeEventListener("click", clickListener);
+    }
+  };
+
   const handleDotClick = (idd, index, len) => {
     const scrollCont = document.getElementById(idd);
     const position = (scrollCont.scrollWidth * index) / len;
@@ -235,12 +249,7 @@ export default function Home() {
 
   return (
     <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
-      <header
-        className="w-screen absolute top-0 right-0 px-8 justify-center flex "
-        onClick={() =>
-          console.log(document.body.clientWidth > 768 || !drop, drop)
-        }
-      >
+      <header className="w-screen absolute top-0 right-0 px-8 justify-center flex ">
         <nav className=" max-w-[1024px] w-full bg-[var(--main)] z-10 flex flex-row justify-between sticky h-[4rem]  top-0">
           {" "}
           <div className="flex flex-row w-[5rem] h-full justify-between  items-center ">
@@ -258,20 +267,37 @@ export default function Home() {
           </div>
           <div
             className="flex  items-center justify-between h-full"
-            onClick={() => setDrop(!drop)}
+            onClick={() => {
+              setDrop(!drop);
+              dropclick();
+            }}
           >
-            {(document.body.clientWidth > 768 || !drop) && (
+            <ul className="remove flex flex-col  md:flex-row  gap-8 items-center  font-medium">
+              {destinination.map((item, index) => {
+                return (
+                  <li
+                    key={index}
+                    id={`${cect === item.id ? "highlight" : ""}`}
+                    className="normalNav uppercase cursor-pointer"
+                    onClick={() => {
+                      handleNavClick(item.id);
+                    }}
+                  >
+                    {" "}
+                    {item.id}
+                  </li>
+                );
+              })}
+            </ul>
+            {!drop && (
               <>
-                <ul className=" flex flex-col  md:flex-row  gap-8 items-center  font-medium">
+                <ul className=" remove_ flex flex-col  md:flex-row  gap-8 items-center  font-medium">
                   {destinination.map((item, index) => {
                     return (
                       <li
                         key={index}
                         id={`${cect === item.id ? "highlight" : ""}`}
                         className="normalNav uppercase cursor-pointer"
-                        onClick={() => {
-                          handleNavClick(item.id);
-                        }}
                       >
                         {" "}
                         {item.id}
@@ -280,16 +306,16 @@ export default function Home() {
                   })}
                 </ul>
                 {(cect === "" && (
-                  <HiOutlineMenu size="24px" className="hide" />
-                )) || <HiOutlineMenuAlt3 size="24px" className="hide" />}
+                  <HiOutlineMenu size="24px" className="remove_" />
+                )) || <HiOutlineMenuAlt3 size="24px" className="remove_" />}
               </>
             )}
-            {drop && <HiOutlineXMark size="24px" className="hide" />}
+            {drop && <HiOutlineXMark size="24px" className="remove_" />}
           </div>
         </nav>
         <ul
-          id={`${drop ? "" : "drop"}`}
-          className="hide z-[20] drop-shadow-[0_2px_2px_#08080b80] overflow-hidden py-1 pl-[1rem] pr-[3rem] bg-[var(--main)] absolute top-[102%] right-2 flex flex-col gap-6 items-start rounded  font-medium"
+          id={`${drop ? "dropped" : "notdrop"}`}
+          className="hider z-[20] drop-shadow-[0_2px_2px_#08080b80] overflow-hidden py-1 pl-[1rem] pr-[3rem] bg-[var(--main)] absolute top-[102%] right-2 flex-col gap-6 items-start rounded  font-medium"
         >
           {destinination.map((item, index) => {
             return (
@@ -712,7 +738,7 @@ export default function Home() {
 
         <section
           id="contact"
-          className="h-[50%] ] min-h-[312px] max-h-[512px] snap-end"
+          className="h-fit min-h-[312px] max-h-[512px] snap-end"
         >
           <div className="flex flex-col gap-4">
             {" "}

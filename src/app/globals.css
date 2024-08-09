@@ -5,8 +5,8 @@
 :root {
   --sec: #001233;
   --main: #cac0b3;
-  --high: #ef233c;
-  /* --high: #990033; */
+  /* --high: #ef233c; */
+  --high: #990033;
   /* --high:#991b1b; */
   /* --high: #931621; */
   --background-end-rgb: 202, 192, 179;
@@ -17,13 +17,13 @@
   scroll-behavior: smooth;
   text-wrap: wrap;
 }
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --sec: #cac0b3;
     --main: #001233;
     --background-end-rgb: 202, 192, 179;
   }
-} */
+}
 
 html,
 body {
@@ -144,15 +144,6 @@ textarea:focus {
   appred:187, 39, 65;
 } */
 
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
 h1 {
   font-size: 50px;
 }
@@ -164,9 +155,16 @@ li {
   font-size: 18px;
 }
 
-.hide {
+.hider {
   display: none;
 }
+.remove {
+  display: flex;
+}
+
+   .remove_ {
+    display: none;
+  }
 
 @media only screen and (max-width: 768px) {
   :root {
@@ -182,29 +180,36 @@ li {
     font-size: 16px;
   }
 
-  .hide {
+  .hider {
     display: flex;
     height: 166px;
-    transition: opacity 0.15s, height 0.15s ease-in-out;
+    transition: visibility 150ms, opacity 150ms, transform 150ms ease-in-out;
     visibility: visible;
     opacity: 100%;
+    transform: translateY(0);
   }
-  .hide#drop {
-    height: 0;
-    opacity: 0;
+
+  .hider#notdrop {
     visibility: hidden;
+    opacity: 0;
+    transform: translateY(-20px);
   }
 
   #highlight {
     display: block !important;
     position: relative;
     color: var(--sec);
-    font-size: 15px;
     transition: all 0.15s ease-in;
-    animation: 200ms enter 1 linear;
+    animation: 150ms enter 1 linear;
   }
   .normalNav {
     display: none;
+  }
+  .remove {
+    display: none;
+  }
+    .remove_ {
+    display: flex;
   }
 }
 
@@ -263,5 +268,14 @@ li {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
