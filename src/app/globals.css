@@ -125,8 +125,16 @@ textarea:focus {
   border-color: var(--high);
 }
 #logodiv {
+  padding: 100px 0px;
   animation: 15s slide infinite linear;
 }
+#logodiv > *:nth-child(even) {
+  animation: 5s updown infinite ease;
+}
+#logodiv > *:nth-child(odd) {
+  animation: 5s downup infinite ease;
+}
+
 #scroll:hover > * {
   animation-play-state: paused;
 }
@@ -136,6 +144,7 @@ textarea:focus {
   height: 2rem;
   margin: 0 1.3rem;
 }
+
 /* somecolors{
   darkblue :0, 18, 51;
   biege:202, 192, 179;
@@ -162,9 +171,9 @@ li {
   display: flex;
 }
 
-   .remove_ {
-    display: none;
-  }
+.remove_ {
+  display: none;
+}
 
 @media only screen and (max-width: 768px) {
   :root {
@@ -208,7 +217,7 @@ li {
   .remove {
     display: none;
   }
-    .remove_ {
+  .remove_ {
     display: flex;
   }
 }
@@ -277,5 +286,29 @@ li {
   }
   to {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(+100%);
+  }
+  100% {
+    transform: translatey(-100%);
+  }
+}
+
+@keyframes downup {
+  0% {
+    transform: translateY(+100%);
+  }
+  50% {
+    transform: translatey(-100%);
+  }
+  100% {
+    transform: translateY(+100%);
   }
 }
