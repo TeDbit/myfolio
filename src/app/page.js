@@ -689,7 +689,7 @@ export default function Home() {
 
             <div
               id="scroll"
-              className=" flex w-[calc(500px-128px)] overflow-hidden ml-16"
+              className=" flex max-w-[472px] w-[calc(100vw-128px)] overflow-hidden ml-16"
             >
               <div id="logodiv" className="flex">
                 <BiLogoFigma />
