@@ -73,12 +73,19 @@ section {
   transition: width 0.15s;
 }
 
+#listy>li{
+padding:4px 18px;
+
+}
 #selected {
+  padding:4px 16px !important;
   border: 2px solid var(--high);
   border-bottom: 2px solid var(--main);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
+
+
 
 #listy {
   position: relative;
@@ -126,7 +133,7 @@ textarea:focus {
 }
 #logodiv {
   padding: 100px 0px;
-  animation: 15s slide infinite linear;
+  animation: 6s slide infinite linear;
 }
 #logodiv > *:nth-child(even) {
   animation: 5s updown infinite ease;
@@ -157,11 +164,22 @@ h1 {
   font-size: 50px;
 }
 
+h2,
 h3 {
   font-size: 18px;
 }
+
+h3 {
+  opacity: 70%;
+}
+
+nav li,#listy li{
+    opacity: 100%;
+
+}
 li {
   font-size: 18px;
+  opacity: 70%;
 }
 
 .hider {
@@ -182,7 +200,7 @@ li {
   h1 {
     font-size: 28px;
   }
-  h3 {
+  h2,h3 {
     font-size: 16px;
   }
   li {
@@ -230,7 +248,7 @@ li {
   h1 {
     font-size: 28px;
   }
-  h3 {
+  h2,h3 {
     font-size: 14px;
   }
   li {
@@ -257,7 +275,7 @@ li {
     h1 {
       font-size: 28px;
     }
-    h3 {
+    h2,h3 {
       font-size: 14px;
     }
     li {

@@ -263,7 +263,7 @@ export default function Home() {
             <div className="bg-[var(--high)] flex items-center justify-center font-extrabold text-xl text-[var(--main)] w-[2.7rem] h-[2.7rem] rounded-full ">
               T
             </div>
-            <h3 className=" font-bold ">ted</h3>
+            <h2 className=" font-bold ">ted</h2>
           </div>
           <div
             className="flex  items-center justify-between h-full"
@@ -349,7 +349,7 @@ export default function Home() {
           className="relative flex  items-center justify-between  pt-[4rem]"
         >
           <div className="h-fit flex flex-col w-[90%] sm:w-[45%] ">
-            <h3>WELCOME TO MY PAGE</h3>
+            <h2>WELCOME TO MY PAGE</h2>
             <h1 className="font-bold leading-snug">Hi, Yeah That's It.</h1>
             <div className="h-fit  ">
               <h3>
@@ -430,7 +430,7 @@ export default function Home() {
                   onClick={() => {
                     setView(index + 1);
                   }}
-                  className="cursor-pointer border-b-0 border-x-0 border-[2px] border-[var(--main)] py-1 px-4 "
+                  className="cursor-pointer border-b-0 border-x-0 border-[2px] border-[var(--main)]"
                 >
                   {item.name}
                 </li>
@@ -461,20 +461,16 @@ export default function Home() {
                         className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
-                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <h2 className="font-bold uppercase">{item.title}</h2>
                         <div className="w-full h-fit flex gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[15rem] sm:w-[28rem] aspect-[1.8/1] rounded-lg"></div>
                           <div className="bg-slate-300 h-full aspect-[1/2] rounded-lg"></div>
                         </div>
                         <div>
-                          <h3 className="font-bold">Description:</h3>
+                          <h2 className="font-bold">Description:</h2>
                           <h3>
                             <Lorem></Lorem>
                           </h3>
-                        </div>
-                        <div>
-                          <h3 className="font-bold ">Link:</h3>
-                          <h3>{item.link}</h3>
                         </div>
                       </div>
                     );
@@ -521,9 +517,9 @@ export default function Home() {
           {/* MLAI ///////////////////////////////////////*/}
 
           {(view === 2 && mlai.length === 0 && (
-            <h3 className="font-bold uppercase pt-8">
+            <h2 className="font-bold uppercase pt-8">
               Nothing to see here yet, will be updated soon
-            </h3>
+            </h2>
           )) ||
             (view == 2 && (
               <>
@@ -541,19 +537,15 @@ export default function Home() {
                         className="flex flex-col gap-10 w-full pt-10 snap-start pr-2"
                       >
                         {" "}
-                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <h2 className="font-bold uppercase">{item.title}</h2>
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
-                          <h3 className="font-bold">Description:</h3>
+                          <h2 className="font-bold">Description:</h2>
                           <h3>
                             <Lorem></Lorem>
                           </h3>
-                        </div>
-                        <div>
-                          <h3 className="font-bold ">Link:</h3>
-                          <h3>{item.link}</h3>
                         </div>
                       </div>
                     );
@@ -597,9 +589,9 @@ export default function Home() {
           {/* TELECOM ///////////////////////////////////////*/}
 
           {(view === 3 && telecom.length === 0 && (
-            <h3 className="font-bold uppercase pt-8">
+            <h2 className="font-bold uppercase pt-8">
               Nothing to see here yet, will be updated soon
-            </h3>
+            </h2>
           )) ||
             (view === 3 && (
               <>
@@ -617,19 +609,15 @@ export default function Home() {
                         className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
-                        <h3 className="font-bold uppercase">{item.title}</h3>
+                        <h2 className="font-bold uppercase">{item.title}</h2>
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
                         <div>
-                          <h3 className="font-bold">Description:</h3>
+                          <h2 className="font-bold">Description:</h2>
                           <h3>
                             <Lorem></Lorem>
                           </h3>
-                        </div>
-                        <div>
-                          <h3 className="font-bold">Link:</h3>
-                          <h3>{item.link}</h3>
                         </div>
                       </div>
                     );
@@ -701,15 +689,12 @@ export default function Home() {
 
             <div
               id="scroll"
-              className=" flex w-[calc(100vw-128px)] overflow-hidden ml-16"
+              className=" flex w-[calc(500px-128px)] overflow-hidden ml-16"
             >
               <div id="logodiv" className="flex">
                 <BiLogoFigma />
-                <BiLogoHtml5 />
-                <BiLogoCss3 />
                 <BiLogoJavascript />
                 <BiLogoPython />
-                <BiLogoTypescript />
                 <BiLogoReact />
                 <BiLogoTailwindCss />
                 <BiLogoNodejs />
@@ -718,11 +703,8 @@ export default function Home() {
               </div>
               <div id="logodiv" className="flex">
                 <BiLogoFigma />
-                <BiLogoHtml5 />
-                <BiLogoCss3 />
                 <BiLogoJavascript />
                 <BiLogoPython />
-                <BiLogoTypescript />
                 <BiLogoReact />
                 <BiLogoTailwindCss />
                 <BiLogoNodejs />
