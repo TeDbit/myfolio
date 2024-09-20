@@ -3,31 +3,25 @@ import Image from "next/image";
 import {
   FaArrowLeftLong,
   FaArrowRightLong,
-  FaCss3,
-  FaHtml5,
-  FaJs,
   FaLinkedin,
-  FaNodeJs,
   FaSquareGithub,
   FaSquareXTwitter,
 } from "react-icons/fa6";
 import {
-  BiLogoCss3,
   BiLogoFigma,
   BiLogoGit,
-  BiLogoHtml5,
   BiLogoJavascript,
   BiLogoMongodb,
   BiLogoNodejs,
   BiLogoPython,
   BiLogoReact,
   BiLogoTailwindCss,
-  BiLogoTypescript,
 } from "react-icons/bi";
 import {
   HiOutlineMenu,
-  HiOutlineMenuAlt2,
   HiOutlineMenuAlt3,
+  HiOutlineMail,
+  HiOutlinePhone,
 } from "react-icons/hi";
 import { HiOutlineXMark } from "react-icons/hi2";
 
@@ -247,6 +241,8 @@ export default function Home() {
     }
   };
 
+  const d = new Date();
+  let year = d.getFullYear();
   return (
     <main className="relative lg:items-center flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
       <header className="w-screen absolute top-0 right-0 px-8 justify-center flex ">
@@ -720,21 +716,116 @@ export default function Home() {
 
         <section
           id="contact"
-          className="h-fit min-h-[312px] max-h-[512px] snap-end"
+          className="h-fit min-h-[312px] max-h-[512px]  relative "
         >
           <div className="flex flex-col gap-4">
             {" "}
             <label className="font-bold uppercase">
               Leave me Feedback below
             </label>
-            <textarea rows="8"></textarea>
+            <Iput placeholder="Name"></Iput>
+            <Tarea placeholder="Message" rows="8"></Tarea>
             <button>Submit Response</button>
           </div>
+          <footer className="flex justify-center py-7 h-fit">
+            @{year} tedworks
+          </footer>
         </section>
       </div>
     </main>
   );
 }
+
+export const Iput = (props) => {
+  const [err, setErr] = useState(false);
+  const {
+    type,
+    placeholder,
+    required,
+    name,
+    pattern,
+    onChange,
+    className,
+    id,
+    title,
+    errmsg,
+    accept,
+  } = props;
+
+  return (
+    <div className="group">
+      <input
+        type={type}
+        required={required}
+        name={name}
+        placeholder=" "
+        pattern={pattern}
+        className={err ? `${className} err` : `${className}`}
+        id={id}
+        title={title}
+        accept={accept}
+        onChange={(e) => {
+          if (pattern) {
+            const regx = new RegExp(`${pattern}`);
+
+            if (regx.test(e.target.value) || e.target.value === "") {
+              setErr(false);
+            } else {
+              setErr(true);
+            }
+          }
+
+          if (onChange) {
+            onChange(e);
+          } else {
+            return;
+          }
+        }}
+      ></input>
+      {placeholder && <label className={err ? "err" : ""}>{placeholder}</label>}
+      <div className="errormsg">{err && errmsg}</div>
+    </div>
+  );
+};
+
+export const Tarea = (props) => {
+  const {
+    type,
+    placeholder,
+    required,
+    name,
+    pattern,
+    onChange,
+    className,
+    id,
+    rows,
+    title,
+  } = props;
+
+  return (
+    <div className="group">
+      <textarea
+        type={type}
+        required={required}
+        name={name}
+        placeholder=" "
+        pattern={pattern}
+        className={className}
+        id={id}
+        rows={rows}
+        title={title}
+        onChange={(e) => {
+          if (onChange) {
+            onChange(e);
+          } else {
+            return;
+          }
+        }}
+      ></textarea>
+      {placeholder && <label>{placeholder}</label>}
+    </div>
+  );
+};
 
 // export default function Home() {
 //   return (
