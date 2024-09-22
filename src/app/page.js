@@ -724,8 +724,10 @@ export default function Home() {
             <Tarea placeholder="Message" maxLength="350" rows="8"></Tarea>
             <button className="self-end">Submit Response</button>
           </div>
-          <footer className="flex justify-center py-7 h-fit">
-            @{year} tedworks
+          <footer className="flex justify-center items-center py-7 h-fit border-t border-[var(--high)] mt-6">
+            <HiOutlineMail size={
+              15
+            }></HiOutlineMail>theodelvis@gmail.com @{year} tedworks
           </footer>
         </section>
       </div>
