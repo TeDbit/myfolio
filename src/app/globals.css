@@ -41,9 +41,12 @@ main {
 nav {
 }
 
+#scrollBox::-webkit-scrollbar {
+  display: none;
+}
+
 #scrollBox {
   scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 section {
