@@ -22,6 +22,7 @@ import {
   HiOutlineMenuAlt3,
   HiOutlineMail,
   HiOutlinePhone,
+  HiOutlineExternalLink,
 } from "react-icons/hi";
 import { HiOutlineXMark } from "react-icons/hi2";
 
@@ -457,7 +458,9 @@ export default function Home() {
                         className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
-                        <h2 className="font-bold uppercase">{item.title}</h2>
+                        <h2 className="link w-fit font-bold cursor-pointer">
+                          {item.title} <HiOutlineExternalLink size={"1.4rem"} />
+                        </h2>
                         <div className="w-full h-fit flex gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[15rem] sm:w-[28rem] aspect-[1.8/1] rounded-lg"></div>
                           <div className="bg-slate-300 h-full aspect-[1/2] rounded-lg"></div>
@@ -473,7 +476,7 @@ export default function Home() {
                   })}
                 </div>
 
-                <div className="text-[var(--high)] absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
+                <div className=" absolute bottom-2 flex gap-3 md:pt-9 w-full h-32 justify-center items-center">
                   <div
                     className="cursor-pointer"
                     onClick={() => {
@@ -533,7 +536,9 @@ export default function Home() {
                         className="flex flex-col gap-10 w-full pt-10 snap-start pr-2"
                       >
                         {" "}
-                        <h2 className="font-bold uppercase">{item.title}</h2>
+                        <h2 className="link  w-fit  font-bold cursor-pointer">
+                          {item.title} <HiOutlineExternalLink size={"1.4rem"} />
+                        </h2>{" "}
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
@@ -605,7 +610,9 @@ export default function Home() {
                         className="flex flex-col w-full pt-10 gap-10 snap-start pr-2"
                       >
                         {" "}
-                        <h2 className="font-bold uppercase">{item.title}</h2>
+                        <h2 className="link w-fit font-bold cursor-pointer">
+                          {item.title} <HiOutlineExternalLink size={"1.4rem"} />
+                        </h2>{" "}
                         <div className="w-full h-fit flex flex-wrap gap-4 justify-start">
                           <div className="bg-slate-400 max-w-full w-[16rem] sm:w-[30rem] aspect-[2/1] rounded-lg"></div>
                         </div>
@@ -725,9 +732,8 @@ export default function Home() {
             <button className="self-end">Submit Response</button>
           </div>
           <footer className="flex justify-center items-center py-7 h-fit border-t border-[var(--high)] mt-6">
-            <HiOutlineMail size={
-              15
-            }></HiOutlineMail>theodelvis@gmail.com @{year} tedworks
+            <HiOutlineMail size={15}></HiOutlineMail>theodelvis@gmail.com @
+            {year} tedworks
           </footer>
         </section>
       </div>

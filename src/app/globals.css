@@ -210,6 +210,14 @@ li {
   display: none;
 }
 
+h2.link:hover {
+  text-decoration: underline;
+}
+
+h2.link * {
+  display: inline;
+}
+
 @media only screen and (max-width: 768px) {
   :root {
     font-size: 14px;
