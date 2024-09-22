@@ -6,6 +6,7 @@ import {
   FaLinkedin,
   FaSquareGithub,
   FaSquareXTwitter,
+  FaAngleDown,
 } from "react-icons/fa6";
 import {
   BiLogoFigma,
@@ -165,6 +166,9 @@ export default function Home() {
     } else if (ratio > 0.9) {
       setCect("contact");
     }
+
+    const director = document.getElementById("director");
+    director.style.display = "none";
   };
 
   const projScroll = (e, setter, len) => {
@@ -385,6 +389,12 @@ export default function Home() {
             ></Image>
           </div>
         </section>
+        <div
+          id="director"
+          className="director flex flex-col absolute bottom-14 left-[8px]"
+        >
+          <FaAngleDown /> <FaAngleDown /> <FaAngleDown />{" "}
+        </div>
 
         {/* BIO /////////////////////////////////////////////////////////////////*/}
 
