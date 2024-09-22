@@ -390,8 +390,8 @@ export default function Home() {
         <section id="bio" className=" justify-center">
           <div className=" flex  h-[50%]">
             <div className="h-ful w-[50%]  relative">
-              <div className="w-[90%] bg-slate-400 h-[95%] rounded-xl absolute top-[20%] -z-10"></div>
-              <div className="w-[90%] bg-slate-300 h-[95%] rounded-xl absolute top-[5%] left-[10%]"></div>
+              <div className="w-[90%] bg-slate-400 h-[80%] sm:h-[95%]  rounded-xl absolute top-[16%] -z-10"></div>
+              <div className="w-[90%] bg-slate-300 h-[80%] sm:h-[95%]  rounded-xl absolute top-[5%] left-[6%]"></div>
             </div>
             <div className="  flex w-[50%] text-wrap justify-center items-end">
               {" "}
@@ -400,7 +400,7 @@ export default function Home() {
               </h1>
             </div>
           </div>
-          <div className="w-[80%] md:pl-[50%] md:pt-[0px] pt-[54px]">
+          <div className="w-[80%] md:pl-[50%] pt-2 md:pt-[0px] sm:pt-14">
             <h3 className="">
               {" "}
               <Lorem></Lorem>
@@ -714,18 +714,15 @@ export default function Home() {
 
         {/* CONTACT /////////////////////////////////////////////////////////////////*/}
 
-        <section
-          id="contact"
-          className="h-fit min-h-[312px] max-h-[512px]  relative "
-        >
-          <div className="flex flex-col gap-4">
+        <section id="contact" className="h-fit min-h-[312px] max-h-[512px] ">
+          <div className="font-bold uppercase pb-4">
+            Leave me Feedback below
+          </div>
+          <div className="flex flex-col gap-6 ">
             {" "}
-            <label className="font-bold uppercase">
-              Leave me Feedback below
-            </label>
-            <Iput placeholder="Name"></Iput>
-            <Tarea placeholder="Message" rows="8"></Tarea>
-            <button>Submit Response</button>
+            <Iput placeholder="Name" maxLength="50"></Iput>
+            <Tarea placeholder="Message" maxLength="350" rows="8"></Tarea>
+            <button className="self-end">Submit Response</button>
           </div>
           <footer className="flex justify-center py-7 h-fit">
             @{year} tedworks
@@ -747,6 +744,7 @@ export const Iput = (props) => {
     onChange,
     className,
     id,
+    maxLength,
     title,
     errmsg,
     accept,
@@ -760,6 +758,7 @@ export const Iput = (props) => {
         name={name}
         placeholder=" "
         pattern={pattern}
+        maxLength={maxLength}
         className={err ? `${className} err` : `${className}`}
         id={id}
         title={title}
@@ -797,6 +796,7 @@ export const Tarea = (props) => {
     pattern,
     onChange,
     className,
+    maxLength,
     id,
     rows,
     title,
@@ -813,6 +813,7 @@ export const Tarea = (props) => {
         className={className}
         id={id}
         rows={rows}
+        maxLength={maxLength}
         title={title}
         onChange={(e) => {
           if (onChange) {
