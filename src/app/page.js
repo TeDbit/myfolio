@@ -17,6 +17,7 @@ import {
   BiLogoPython,
   BiLogoReact,
   BiLogoTailwindCss,
+  BiCopyright,
 } from "react-icons/bi";
 import {
   HiOutlineMenu,
@@ -393,6 +394,9 @@ export default function Home() {
           id="director"
           className="director flex flex-col absolute bottom-14 left-[8px]"
         >
+          {/* <h2 className="font-semibold text-[12px] md:text-[14px] -translate-x-5 -translate-y-5 -rotate-90">
+            SCROLL
+          </h2> */}
           <FaAngleDown /> <FaAngleDown /> <FaAngleDown />{" "}
         </div>
 
@@ -426,7 +430,7 @@ export default function Home() {
             What Have I Done ?
           </h1> */}
           <ul
-            className="flex sm:justify-start justify-center flex-row gap-8 max-w-full"
+            className="flex sm:justify-start justify-center flex-row gap-[1.5rem] max-w-full"
             id="listy"
           >
             {projtype.map((item, index) => {
@@ -742,7 +746,9 @@ export default function Home() {
             <button className="self-end">Submit Response</button>
           </div>
           <footer className="flex justify-center items-center py-7 h-fit border-t border-[var(--high)] mt-6">
-            <HiOutlineMail size={15}></HiOutlineMail>theodelvis@gmail.com @
+            <HiOutlineMail size={15} />
+            theodelvis@gmail.com{" "}
+            <BiCopyright style={{ paddingLeft: "8px" }} size={23} />
             {year} tedworks
           </footer>
         </section>

@@ -190,7 +190,7 @@ h3 {
   opacity: 70%;
 }
 
-nav li,
+header li,
 #listy li {
   opacity: 100%;
 }
@@ -218,7 +218,7 @@ h2.link:hover {
   text-decoration: underline;
 }
 
-h2.link * {
+footer,h2.link * {
   display: inline;
 }
 
@@ -288,15 +288,15 @@ h2.link * {
 }
 
 @media only screen and (max-height: 625px) {
-  /* :root {
+  :root {
     font-size: 12px;
   }
 
   #scrollBox {
     display: block;
-    min-height: calc(600px - 4rem);
-    scroll-snap-type: mandatory;
-  }*/
+    /* min-height: calc(600px - 4rem); */
+    scroll-snap-type: none;
+  }
 
   section {
     min-height: 624px;
