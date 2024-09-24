@@ -83,7 +83,7 @@ section {
 }
 
 #listy > li {
-  padding: 4px 18px;
+  padding: 4px 1.6rem;
 }
 #selected {
   padding: 4px 16px !important;
@@ -218,7 +218,8 @@ h2.link:hover {
   text-decoration: underline;
 }
 
-footer,h2.link * {
+footer,
+h2.link * {
   display: inline;
 }
 
@@ -287,21 +288,21 @@ footer,h2.link * {
   }
 }
 
-@media only screen and (max-height: 625px) {
+@media only screen and (max-height: 720px) {
   :root {
     font-size: 12px;
   }
-
-  #scrollBox {
-    display: block;
-    /* min-height: calc(600px - 4rem); */
-    scroll-snap-type: none;
-  }
-
   section {
     min-height: 624px;
   }
 
+  @media only screen and (max-height: 624px) {
+    #scrollBox {
+      display: block;
+      /* min-height: calc(600px - 4rem); */
+      scroll-snap-type: none;
+    }
+  }
   @media only screen and (max-width: 900px) {
     h1 {
       font-size: 28px;
@@ -314,10 +315,7 @@ footer,h2.link * {
       font-size: 14px;
     }
 
-    #scrollBox {
-      scroll-snap-type: none;
-      /* overflow: hidden; */
-    }
+   
   }
 }
 
