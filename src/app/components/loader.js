@@ -1,4 +1,4 @@
-import "/home/ted/myfolio/src/app/components/loader.css";
+import "./loader.css";
 const Loader = () => {
   return (
     <div className="flex w-screen h-screen justify-center items-center">
