@@ -1,43 +1,54 @@
 "use client";
 
-const page = () => {
+const Page = () => {
   const comments = [
     {
+      id: 1,
       name: "Somebody",
       comment:
         "g ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
+
       name: "Somebody",
       comment:
         "g ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
+
       name: "Somebody",
       comment:
         "g ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
       name: "Somebody",
       comment:
         "g ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
       name: "Somebody",
       comment:
         "g ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI ood wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
+
       name: "Somebody",
       comment: "good wther today and impressive UI",
       stamp: "19:46",
     },
     {
+      id: 1,
+
       name: "Somebody",
       comment: "good wther today and impressive UI",
       stamp: "19:46",
@@ -55,6 +66,7 @@ const page = () => {
             {comments.map((item, index) => {
               return (
                 <div
+                  key={item.id}
                   className="flex flex-col w-full  p-[15px] h-fit bg-slate-900 rounded-[1.6rem]"
                   //   ref={comments.length === index + 1 ? lastMan : null}
                 >
@@ -71,4 +83,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

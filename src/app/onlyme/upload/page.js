@@ -2,7 +2,7 @@
 import { Ifile, Iput } from "@/app/components/Inputs";
 import { Tarea } from "@/app/components/Inputs";
 import { useState } from "react";
-const page = () => {
+const Page = () => {
   const [view, setView] = useState(1);
   const [drop, setDrop] = useState(false);
 
@@ -13,6 +13,8 @@ const page = () => {
   ];
   return (
     <>
+      {" "}
+      id:1,
       <section className="h-fit  ">
         <div className="font-bold uppercase pb-4">New Project</div>
         <div className="flex flex-col gap-6 ">
@@ -56,4 +58,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
