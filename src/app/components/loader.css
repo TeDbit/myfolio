@@ -1,4 +1,4 @@
-.block {
+.brick {
   width: 24px;
   height: 24px;
   background-color: var(--high);
@@ -9,37 +9,37 @@
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
   gap: 4px;
-  animation: spin 3s linear infinite;
+  animation: spin 2.5s linear infinite;
 }
-.block:nth-child(1) {
-  animation: block1 3s linear infinite;
+.brick:nth-child(1) {
+  animation: brick1 2.5s linear infinite;
 }
 
-.block:nth-child(2) {
-  animation: block2 3s linear infinite;
+.brick:nth-child(2) {
+  animation: brick2 2.5s linear infinite;
 }
-.block:nth-child(3) {
+.brick:nth-child(3) {
   grid-row-start: 2;
   grid-column-start: 1;
-  animation: block3 3s linear infinite;
+  animation: brick3 2.5s linear infinite;
 }
-.block:nth-child(4) {
+.brick:nth-child(4) {
   grid-row-start: 2;
   grid-column-start: 3;
-  animation: block4 3s linear infinite;
+  animation: brick4 2.5s linear infinite;
 }
-.block:nth-child(5) {
+.brick:nth-child(5) {
   grid-row-start: 3;
   grid-column-start: 2;
-  animation: block5 3s linear infinite;
+  animation: brick5 2.5s linear infinite;
 }
-.block:nth-child(6) {
+.brick:nth-child(6) {
   grid-row-start: 3;
   grid-column-start: 3;
-  animation: block6 3s linear infinite;
+  animation: brick6 2.5s linear infinite;
 }
 
-@keyframes block2 {
+@keyframes brick2 {
   0% {
     transform: translate(0, 0);
   }
@@ -66,7 +66,7 @@
   }
 }
 
-@keyframes block1 {
+@keyframes brick1 {
   0% {
     transform: translate(0, 0);
   }
@@ -96,7 +96,7 @@
   }
 }
 
-@keyframes block3 {
+@keyframes brick3 {
   0% {
     transform: translate(0, 0);
   }
@@ -126,7 +126,7 @@
   }
 }
 
-@keyframes block4 {
+@keyframes brick4 {
   0% {
     transform: translate(0, 0);
   }
@@ -157,7 +157,7 @@
   }
 }
 
-@keyframes block5 {
+@keyframes brick5 {
   0% {
     transform: translate(0, 0);
   }
@@ -187,7 +187,7 @@
   }
 }
 
-@keyframes block6 {
+@keyframes brick6 {
   0% {
     transform: translate(0, 0);
   }

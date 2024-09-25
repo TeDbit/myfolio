@@ -1,12 +1,17 @@
 import "./loader.css";
-const Loader = () => {
+const Loader = (props) => {
+  const { size } = props;
+
   return (
-    <div className="flex w-screen h-screen justify-center items-center">
+    <div
+      id={`${size == "small" ? "small" : "normal"}`}
+      className="flex w-screen h-screen justify-center items-center"
+    >
       <div className="gridb">
-        <div className="block"></div>
-        <div className="block"></div>
-        <div className="block"></div> <div className="block"></div>{" "}
-        <div className="block"></div> <div className="block"></div>
+        <div className="brick"></div>
+        <div className="brick"></div>
+        <div className="brick"></div> <div className="brick"></div>{" "}
+        <div className="brick"></div> <div className="brick"></div>
       </div>
     </div>
   );

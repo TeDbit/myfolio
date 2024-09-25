@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import "./inputs.css";
+import { useState, useRef } from "react";
 
 export const Iput = (props) => {
   const [err, setErr] = useState(false);
@@ -92,6 +93,56 @@ export const Tarea = (props) => {
         }}
       ></textarea>
       {placeholder && <label>{placeholder}</label>}
+    </div>
+  );
+};
+
+export const Ifile = (props) => {
+  const { required, placeholder } = props;
+
+  const [filing, setFiling] = useState(false);
+  const filename = useRef(null);
+
+  const handleFileName = (e) => {
+    if (e.currentTarget.files.length > 0) {
+      filename.current = e.currentTarget.files[0].name;
+    } else {
+      filename.current = null;
+    }
+  };
+  const dothis = () => {
+    return new Promise((resolve) => {
+      setFiling(true);
+
+      document.getElementById("file").addEventListener("change", (e) => {
+        handleFileName(e);
+      });
+
+      resolve();
+    });
+  };
+  return (
+    <div
+      className="letterdiv"
+      onClick={() => {
+        dothis().then(() => {
+          setTimeout(() => {
+            setFiling(false);
+          }, 2000);
+        });
+      }}
+    >
+      <label className="px-[5px]" htmlFor="file">
+        {filename.current === null ? `${placeholder}` : `${filename.current}`}
+      </label>
+      <Iput
+        className="hidden"
+        type="file"
+        id="file"
+        name="letter"
+        required={required}
+        accept=".jpeg"
+      ></Iput>
     </div>
   );
 };

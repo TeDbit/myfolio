@@ -1,10 +1,7 @@
+import Loader from "./components/loader";
 
-function loading() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const Loading = () => {
+  return <Loader />;
+};
 
-export default loading
+export default Loading;

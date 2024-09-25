@@ -27,7 +27,6 @@
 
 html,
 body {
-  overflow: hidden;
 }
 
 body {
@@ -52,13 +51,15 @@ nav {
 section {
   padding: calc(5dvh + 4rem) 0px 0px 0px;
   height: 100%;
-  max-height: 1024px;
   width: 100%;
   max-width: 1024px;
   /* margin: 0 auto; */
   scroll-snap-align: start;
   /* border-bottom: 1px solid rgb(var(--sec));
   border-left: 1px solid rgb(var(--sec)); */
+}
+section.client {
+  max-height: 1024px;
 }
 
 #highlight {
@@ -120,24 +121,6 @@ button {
 button:hover {
   color: var(--high);
   border: 1px solid var(--high);
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 4px 4px;
-  border: 1px solid var(--sec);
-  border-radius: 8px;
-  background-color: transparent;
-  resize: none;
-  transition: border-color 0.15s;
-}
-
-input:focus,
-textarea:focus {
-  box-shadow: none;
-  outline: none;
-  border-color: var(--high);
 }
 
 .normal {
@@ -203,9 +186,32 @@ li {
   animation: director 2s cubic-bezier(0, 1, 1, 1) infinite;
 }
 
+.selectorDD {
+  display: flex;
+  height: 130px;
+  width: 99%;
+  transition: visibility 150ms, opacity 150ms, transform 150ms ease-in-out;
+  visibility: visible;
+  opacity: 100%;
+  transform: translateY(0);
+}
+
 .hider {
   display: none;
+  height: fit-content;
+  transition: visibility 150ms, opacity 150ms, transform 150ms ease-in-out;
+  visibility: visible;
+  opacity: 100%;
+  transform: translateY(0);
 }
+
+.hider#notdrop,
+.selectorDD#notdrop {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
 .remove {
   display: flex;
 }
@@ -240,17 +246,6 @@ h2.link * {
 
   .hider {
     display: flex;
-    height: 166px;
-    transition: visibility 150ms, opacity 150ms, transform 150ms ease-in-out;
-    visibility: visible;
-    opacity: 100%;
-    transform: translateY(0);
-  }
-
-  .hider#notdrop {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-20px);
   }
 
   #highlight {
@@ -289,9 +284,9 @@ h2.link * {
 }
 
 @media only screen and (max-height: 720px) {
-  :root {
+  /* :root {
     font-size: 12px;
-  }
+  } */
   section {
     min-height: 624px;
   }
@@ -314,8 +309,6 @@ h2.link * {
     li {
       font-size: 14px;
     }
-
-   
   }
 }
 
@@ -368,86 +361,4 @@ h2.link * {
   100% {
     transform: translateY(-100%);
   }
-}
-
-.Page {
-  width: 100%;
-  height: 100%;
-  padding: 30%;
-}
-
-.group {
-  position: relative;
-  width: 100%;
-  height: fit-content;
-}
-
-.group > input,
-.group > textarea {
-  transition: 0.15s;
-}
-
-.group > label {
-  position: absolute;
-  display: flex;
-  z-index: 1;
-  background-color: var(--main);
-  transform: translate(0%, -50%);
-  top: 15px;
-  left: 4px;
-  color: var(--sec);
-  padding: 0px 5px;
-  transition: 0.15s;
-  opacity: 1;
-}
-
-.group > input:focus + label,
-.group > textarea:focus + label {
-  font-size: 0.75rem;
-
-  top: 0;
-  color: var(--sec) !important;
-}
-.letterdiv {
-  position: relative;
-}
-
-label.letter + .group {
-  position: absolute;
-  top: 0;
-}
-
-.group > input:not(:placeholder-shown) + label,
-.group > textarea:not(:placeholder-shown) + label {
-  opacity: 1;
-
-  font-size: 0.75rem;
-  top: 0;
-  color: var(--sec);
-}
-
-.errormsg {
-  position: absolute;
-  top: 100%;
-  height: 14px;
-  /* background-color: aqua; */
-  font-size: 0.6rem;
-  padding-left: 9px;
-  color: #c31a25;
-}
-
-.group > input.err {
-  border-color: #c31a25;
-}
-
-label.err {
-  color: #c31a25;
-}
-
-.group > input.err:focus + label {
-  color: #c31a25 !important;
-}
-
-.group > input.err:not(:placeholder-shown) + label {
-  color: #c31a25;
 }

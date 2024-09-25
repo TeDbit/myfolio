@@ -349,7 +349,7 @@ export default function Home() {
 
         <section
           id="home"
-          className="relative flex  items-center justify-between  pt-[4rem]"
+          className="client relative flex  items-center justify-between  pt-[4rem]"
         >
           <div className="h-fit flex flex-col w-[90%] sm:w-[45%] ">
             <h2>WELCOME TO MY PAGE</h2>
@@ -403,7 +403,7 @@ export default function Home() {
 
         {/* BIO /////////////////////////////////////////////////////////////////*/}
 
-        <section id="bio" className=" justify-center">
+        <section id="bio" className="client justify-center">
           <div className=" flex  h-[50%]">
             <div className="h-ful w-[50%]  relative">
               <div className="w-[90%] bg-slate-400 h-[80%] sm:h-[95%]  rounded-xl absolute top-[16%] -z-10"></div>
@@ -426,7 +426,7 @@ export default function Home() {
 
         {/* PROECTS /////////////////////////////////////////////////////////////////*/}
 
-        <section id="projects" className="relative">
+        <section id="projects" className="client relative">
           {/* <h1 className="w-[100%] text-5xl font-bold leading-snug">
             What Have I Done ?
           </h1> */}
@@ -681,7 +681,7 @@ export default function Home() {
 
         {/* SKILLS /////////////////////////////////////////////////////////////////*/}
 
-        <section id="skills" className="flex flex-col gap-10 ">
+        <section id="skills" className="client flex flex-col gap-10 ">
           <div>
             <label className="font-bold uppercase">Soft Skills</label>
 
@@ -736,7 +736,10 @@ export default function Home() {
 
         {/* CONTACT /////////////////////////////////////////////////////////////////*/}
 
-        <section id="contact" className="h-fit min-h-[312px] max-h-[512px] ">
+        <section
+          id="contact"
+          className="client h-fit min-h-[312px] max-h-[512px] "
+        >
           <div className="font-bold uppercase pb-4">
             Leave me Feedback below
           </div>

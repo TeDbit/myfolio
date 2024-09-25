@@ -1,0 +1,105 @@
+#selector,
+.letterdiv,
+input,
+textarea {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--sec);
+  border-radius: 8px;
+  background-color: transparent;
+  resize: none;
+  transition: border-color 0.15s;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: var(--high);
+}
+
+.Page {
+  width: 100%;
+  height: 100%;
+  padding: 30%;
+}
+
+.group {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.group > input,
+.group > textarea {
+  transition: 0.15s;
+}
+
+.group > label {
+  position: absolute;
+  display: flex;
+  z-index: 1;
+  background-color: var(--main);
+  transform: translate(0%, -50%);
+  top: 15px;
+  left: 4px;
+  color: var(--sec);
+  padding: 0px 5px;
+  transition: 0.15s;
+  opacity: 1;
+}
+
+.group > input:focus + label,
+.group > textarea:focus + label {
+  font-size: 0.95rem;
+
+  top: 0;
+  color: var(--sec) !important;
+}
+/* .letterdiv {
+  position: relative;
+}
+
+label.letter + .group {
+  position: absolute;
+  top: 0;
+} */
+
+.group > input:not(:placeholder-shown) + label,
+.group > textarea:not(:placeholder-shown) + label {
+  opacity: 1;
+
+  font-size: 0.95rem;
+  top: 0;
+  color: var(--sec);
+}
+
+.errormsg {
+  position: absolute;
+  top: 100%;
+  height: 14px;
+  /* background-color: aqua; */
+  font-size: 0.6rem;
+  padding-left: 9px;
+  color: #c31a25;
+}
+
+.group > input.err {
+  border-color: #c31a25;
+}
+
+label.err {
+  color: #c31a25;
+}
+
+.group > input.err:focus + label {
+  color: #c31a25 !important;
+}
+
+.group > input.err:not(:placeholder-shown) + label {
+  color: #c31a25;
+}
+.letterdiv > label {
+  display: block;
+  width: 100%;
+}
