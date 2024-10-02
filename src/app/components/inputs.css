@@ -1,15 +1,16 @@
-#selector,
 .letterdiv,
 input,
 textarea {
-  width: 100%;
   padding: 4px;
+  width: 100%;
   border: 1px solid var(--sec);
   border-radius: 8px;
   background-color: transparent;
   resize: none;
   transition: border-color 0.15s;
 }
+
+
 
 input:focus,
 textarea:focus {
@@ -102,4 +103,14 @@ label.err {
 .letterdiv > label {
   display: block;
   width: 100%;
+}
+
+label span {
+  opacity: 0;
+  transition: all 150ms ease;
+}
+input:checked + label span {
+  background-color: var(--sec);
+  color: var(--main);
+  opacity: 1;
 }

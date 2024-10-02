@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
-import { Iput, Tarea } from "../components/Inputs";
+import { Iput, Tarea, CheckB, Ifile } from "../components/Inputs";
 import { usePathname } from "next/navigation";
+import { FaAngleDown } from "react-icons/fa6";
 
 import {
   HiOutlineMail,
@@ -14,9 +15,10 @@ import { useEffect, useRef, useMemo, useState } from "react";
 import Link from "next/link";
 import { BiCopyright } from "react-icons/bi";
 
-export default function Layout({ children, upload }) {
+export default function Layout({ children, projects }) {
   const [cect, setCect] = useState("messages");
   const [drop, setDrop] = useState(false);
+  const [view, setView] = useState(1);
 
   const pathname = usePathname();
   const projtype = [
@@ -27,8 +29,7 @@ export default function Layout({ children, upload }) {
 
   const destinination = [
     { id: "messages", href: "" },
-    { id: "upload", href: "/upload" },
-    { id: "edit", href: "/edit" },
+    { id: "projects", href: "/projects" },
   ];
 
   const software = [
@@ -142,8 +143,8 @@ export default function Layout({ children, upload }) {
   const d = new Date();
   let year = d.getFullYear();
   return (
-    <main className="relative lg:items-center h-fit flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
-      <header className="w-screen fixed top-0 left-0 px-8 bg-[var(--main)] z-10  justify-center flex ">
+    <main className="relative min-w-[368px] lg:items-center justify-between h-fit min-h-screen flex  lg:min-w-[100dvh] flex-col  items-start px-8 ">
+      <header className="w-screen min-w-full fixed top-0 left-0 px-8 bg-[var(--main)] z-10  justify-center flex ">
         <nav className=" max-w-[1024px] w-full flex flex-row justify-between sticky h-[4rem]  top-0">
           {" "}
           <div className="flex flex-row w-[5rem] h-full justify-between  items-center ">
@@ -154,7 +155,7 @@ export default function Layout({ children, upload }) {
             className="w-[40px] h-[40px] rounded-full"
             alt="profile pic"
           ></Image> */}
-            <div className="bg-[var(--high)] flex items-center justify-center font-extrabold text-xl text-[var(--main)] w-[2.7rem] h-[2.7rem] rounded-full ">
+            <div className="bg-[var(--high)] flex items-center justify-center  font-extrabold text-xl text-[var(--main)] w-[2.7rem] h-[2.7rem] rounded-full ">
               T
             </div>
             <h2 className=" font-bold ">ted</h2>
@@ -210,7 +211,6 @@ export default function Layout({ children, upload }) {
                 )) || <HiOutlineMenuAlt3 size="24px" className="remove_" />}
               </>
             )}
-            {drop && <HiOutlineXMark size="24px" className="remove_" />}
           </div>
         </nav>
         <ul
@@ -238,9 +238,15 @@ export default function Layout({ children, upload }) {
           })}
         </ul>
       </header>
+
       {children}
-      {upload}
-      <footer className="flex justify-center w-full max-w-[1024px]  items-center py-7 h-fit border-t border-[var(--high)] mt-6">
+      {projects}
+
+    
+      <footer
+        className="flex justify-center w-full max-w-[1024px]  items-center py-7 h-fit border-t border-[var(--high)] mt-6 justify-self-stretch
+      "
+      >
         <HiOutlineMail size={15} />
         theodelvis@gmail.com{" "}
         <BiCopyright style={{ paddingLeft: "8px" }} size={23} />

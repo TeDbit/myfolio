@@ -6,6 +6,8 @@
   --sec: #001233;
   --main: #cac0b3;
   /* --high: #ef233c; */
+  --mshade: #0f172a;
+  --outline: #000d24;
   --high: #990033;
   /* --high:#991b1b; */
   /* --high: #931621; */
@@ -111,7 +113,8 @@ section.client {
 button {
   height: fit-content;
   width: fit-content;
-  padding: 16px;
+  font-size: 0.9rem;
+  padding: 12px 16px;
   color: var(--sec);
   border: 1px solid var(--high);
   border-radius: 8px;
@@ -361,4 +364,37 @@ h2.link * {
   100% {
     transform: translateY(-100%);
   }
+}
+
+table {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--mshade);
+  padding: 14px 0px;
+  border-bottom: 1px solid var(--outline);
+  border-left: 1px solid var(--main);
+  border-right: 1px solid var(--main);
+  cursor: default;
+  scroll-snap-align: start;
+  transition: 0.05s ease-out;
+  animation: appearIn 0.15s ease-out 1;
+}
+
+.row:hover {
+  border-left: 1px solid var(--outline);
+  border-right: 1px solid var(--outline);
+  box-shadow: inset 0 -1px 0 0 var(--outline);
+}
+
+.item {
+  padding: 5px 10px;
+  cursor: default;
+  /* white-space: nowrap; */
+  font-size: 0.9rem;
+  text-align: left;
+  text-overflow: ellipsis;
 }

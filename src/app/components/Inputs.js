@@ -1,5 +1,7 @@
 "use client";
 import "./inputs.css";
+import { FaCheck } from "react-icons/fa6";
+
 import { useState, useRef } from "react";
 
 export const Iput = (props) => {
@@ -143,6 +145,30 @@ export const Ifile = (props) => {
         required={required}
         accept=".jpeg"
       ></Iput>
+    </div>
+  );
+};
+
+export const CheckB = (props) => {
+  const { label, value, checked } = props;
+
+  return (
+    <div>
+      <input
+        type="checkbox"
+        className="w-0"
+        defaultChecked={checked}
+        id={label.toLowerCase()}
+      ></input>
+      <label htmlFor={label.toLowerCase()} className="flex gap-2">
+        <div className="flex h-[25px] w-[25px] border items-center justify-center">
+          <span>
+            {" "}
+            <FaCheck className="facheck" />
+          </span>
+        </div>
+        Display
+      </label>
     </div>
   );
 };
